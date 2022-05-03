@@ -2,6 +2,7 @@ import { fileURLToPath, URL } from 'url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { resolve } from 'path' 
 
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -26,11 +27,8 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: '../dist',
-    assetsDir: '../assets',
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
         index: resolve(__dirname, 'src/pages/index.html')
       }
     }
