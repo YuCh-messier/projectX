@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 5050"
+    "preview": "vite preview --port 5050",
+    "watch1":"npx sass --watch ./src/assets/publicT.scss ./src/assets/public.css",
+    "watch2":"npx postcss ./src/assets/public.scss -o ./src/assets/publicT.scss --watch"
   },
   "dependencies": {
     "element-plus": "^2.1.11",
