@@ -1,11 +1,16 @@
 module.exports = {
   content: [
     './src/pages/*.html',
-    './src/scripts/*.js'
+    './src/scripts/*.js',
+    './src/components/*.vue',
   ],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      padding: {
+        '100%': '100%',
+      }
+    },
   },
   variants: {},
   plugins: [],
