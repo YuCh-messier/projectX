@@ -1,11 +1,11 @@
 <script setup>
-import { toRefs,ref } from 'vue';
-import UserInfo from '../Forms/UserInfo.vue';
+import { toRefs,watch } from 'vue';
 var props=defineProps(['userinfo'])
+var emits=defineEmits(['getback'])
 var {userinfo}=toRefs(props)
-var statu=ref(0)
-function changeStatu(){
-  statu.value=(statu.value==0)?1:0
+var submitUserInfo=function(){
+    console.log(userinfo)
+    emits('getback')
 }
 </script>
 
@@ -25,17 +25,16 @@ export default {
 </script>
 
 <template>
-    <div v-if="statu==0">
+    <div>
         <div class="flex justify-between items-center my-5 px-10">
             <div class="text-lg font-semibold inline-block">基本信息</div>
-            <button class="h-fit buttonStandardDark" @click="changeStatu">修改</button>
+            <button class="h-fit buttonStandardLight" @click="submitUserInfo">提交</button>
         </div>
         <div class="flex py-4 px-10 rounded-sm" :class="{'bg-white':(index%2==0)}" v-for="info,index in userinfo" :key="info.title">
             <div class="w-1/3 text-gray-500">{{info.title}}</div>
-            <div>{{info.content}}</div>
+            <input style="background-color:inherit;" class="border hover:border-amber-400" v-model="info.content"/>
         </div>
     </div>
-    <UserInfo v-else :userinfo="userinfo" @getback="changeStatu"></UserInfo>
 </template>
 
 <style src="../../assets/public.css"></style>

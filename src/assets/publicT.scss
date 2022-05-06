@@ -481,6 +481,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .col-end-13 {
   grid-column-end: 13;
 }
+.float-right {
+  float: right;
+}
 .m-4 {
   margin: 1rem;
 }
@@ -705,6 +708,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-4 {
   border-width: 4px;
 }
+.border {
+  border-width: 1px;
+}
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -736,6 +746,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-pink-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 168 212 / var(--tw-bg-opacity));
+}
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+.bg-inherit {
+  background-color: inherit;
 }
 .p-4 {
   padding: 1rem;
@@ -957,6 +974,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .hover\:cursor-pointer:hover {
   cursor: pointer;
+}
+.hover\:border-amber-400:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(251 191 36 / var(--tw-border-opacity));
 }
 .hover\:text-orange-400:hover {
   --tw-text-opacity: 1;

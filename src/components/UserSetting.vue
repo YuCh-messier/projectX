@@ -14,6 +14,43 @@ var userInfo=[
   {title:'学校',content:'中南财经政法大学'},
   {title:'专业',content:'经济学'}
 ]
+var userResume={
+  overView:`我是一个优秀的大学生`,
+  educateView:[
+    {
+      '学校':'中南财经政法大学',
+      '学位':'学士',
+      '时间':'2019-2023',
+      '经历简介':`我在学校干了很多事情`
+    },{
+      '学校':'中南财经政法大学',
+      '学位':'学士',
+      '时间':'2019-2023',
+      '经历简介':`我在学校干了很多事情`
+    }
+  ],
+  internshipView:[
+    {
+      companyName:'武汉同创万智科技有限公司',
+      position:'技术部部长',
+      timePeriod:'2020-至今',
+      companyIntro:`我在公司干了很多事情`
+    },{
+      companyName:'武汉同创万智科技有限公司',
+      position:'技术部部长',
+      timePeriod:'2020-至今',
+      companyIntro:`我在公司干了很多事情`
+    }
+  ],
+  projectView:[
+    {
+      projectName:'网站开发',
+      role:'架构师|产品经理',
+      timePeriod:'2022-至今',
+      projectIntro:'我做了很多事情'
+    }
+  ]
+}
 </script>
 
 <script>
@@ -41,7 +78,7 @@ export default {
         <UserHeader></UserHeader>
         <Switcher @changechoice="changeChoice" :choices="['个人资料','简历上传','我的收藏','我的投递','我的消息']"></Switcher>
         <PersonalInfo v-if="currentPath=='个人资料'" :userinfo="userInfo"></PersonalInfo>
-        <Resume v-if="currentPath=='简历上传'"></Resume>
+        <Resume v-if="currentPath=='简历上传'" :userresume="userResume"></Resume>
     </div>
 </template>
 

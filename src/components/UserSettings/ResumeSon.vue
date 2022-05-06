@@ -2,7 +2,6 @@
 import { toRefs } from 'vue';
 var props=defineProps(['resumeson'])
 var {resumeson}=toRefs(props)
-resumeson=resumeson
 </script>
 
 <script>
