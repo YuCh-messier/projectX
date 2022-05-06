@@ -2,3 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+.picFullMode{
+    @apply w-full h-full truncate
+}
+.buttonStandardDark{
+    @apply hover:bg-amber-200 bg-amber-400 text-white py-1 px-4 text-sm rounded focus:bg-amber-200
+}
+.buttonStandardLight{
+    @apply border border-amber-400 py-1 px-4 rounded text-amber-400 hover:border-amber-200 hover:cursor-pointer text-sm
+}
+.buttonBigDark{
+    @apply focus:bg-amber-200 bg-amber-400 py-2 px-6 rounded text-white hover:bg-amber-200 hover:cursor-pointer font-semibold text-sm
+}
+.buttonBigLight{
+    @apply border border-amber-400 py-2 px-6 rounded text-amber-400 hover:border-amber-200 hover:cursor-pointer text-sm font-medium
+}
+.tapsStandard{
+    @apply text-sm text-amber-400 border border-amber-400 rounded-2xl py-1 px-4
+}
+.headerHoverPattern{
+    @apply hover:text-orange-400 hover:cursor-pointer
+}
+.flexStandard{
+    @apply flex items-center justify-around 
+}
+.textSm{
+    @apply text-sm text-gray-500
+}

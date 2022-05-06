@@ -29,7 +29,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        index: resolve(__dirname, 'src/pages/index.html')
+        recruits: resolve(__dirname, 'src/pages/recruits.html'),
+        speRecruit: resolve(__dirname, 'src/pages/speRecruit.html')
       }
     }
   }

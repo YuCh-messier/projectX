@@ -13,37 +13,42 @@ export default {
           {id:3,value:'职前培训',url:''},
           {id:4,value:'商务合作',url:''}
       ],
-      user:{
-        name:'用户',
-        headImg:''
-      }
+      host:'http://localhost:3000/pages/'
+    }
+  },
+  methods:{
+    goto(url){
+      window.location=this.host+url
     }
   },
   components:{
-    Son1
-  }
+    Son1,Son2
+  },
+  props:['user']
 }
 </script>
 
 <template>
-  <div id="header" class="grid grid-cols-12 gap-4 items-center m-2 text-sm text-gray-600">
+<div class="bg-white shadow-md">
+  <div id="header" class="container mx-auto grid grid-cols-12 gap-4 items-center py-2 textSm">
     <div id="logo" class="col-start-1 col-end-3"><img src="" alt="" class="bg-pink-500 w-full h-fit"></div>
 
-    <div id="middlePart" class="col-start-3 col-end-9 flex justify-items-center justify-around">
-      <div class="hover:text-orange-400">首页</div>
+    <div id="middlePart" class="col-start-3 col-end-9 flexStandard">
+      <div class="headerHoverPattern">首页{{name}}</div>
 
-      <Son1></Son1>
-      <Son2></Son2>
+      <Son1 class="headerHoverPattern"></Son1>
+      <Son2 class="headerHoverPattern"></Son2>
 
-      <div class="hover:text-orange-400">招聘</div>
-      <div v-for="item in headerParts" :key="item.id" class="hover:text-orange-400">{{item.value}}</div>
+      <div v-for="item in headerParts" :key="item.id" class="headerHoverPattern">{{item.value}}</div>
     </div>
 
     <div></div>
 
-    <div id="headImg"><img class="rounded-[100%] bg-pink-500 w-12 h-12" :src="user.headImg" alt=""></div>
-    <div class="col-start-11 col-end-13">{{user.name}}</div>
+    <div id="headImg" v-if="user.statu"><img @click="goto('userSetting.html')" class="rounded-[100%] bg-pink-500 w-10 h-10 headerHoverPattern" :src="user.userInfo.headImg" alt=""></div>
+    <div class="col-start-11 col-end-13" v-if="user.statu">欢迎使用！{{user.userInfo.name}}</div>
+    <div v-else class="flex"><el-button class="buttonStandard">登录</el-button><el-button class="buttonStandard" :icon="Search">注册</el-button></div>
   </div>
+</div>
 </template>
 
 <style src="../../assets/public.css"></style>
