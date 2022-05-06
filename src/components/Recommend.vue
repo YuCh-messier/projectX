@@ -52,12 +52,12 @@ export default {
 
 <template>
 <div>
-    <div class="container mx-auto flex 2xl:px-24">
+    <div class="container mx-auto flex">
         <div class="w-full lg:w-1/3 mx-auto m-5">
             <SearchBox @searchfunction="searchFunction"></SearchBox>
         </div>
     </div>
-    <div class="container mx-auto xl:px-24 2xl:px-48">
+    <div class="container mx-auto">
         <RecommendList :contents="contents"></RecommendList>
     </div>
 </div>

@@ -30,7 +30,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         recruits: resolve(__dirname, 'src/pages/recruits.html'),
-        speRecruit: resolve(__dirname, 'src/pages/speRecruit.html')
+        speRecruit: resolve(__dirname, 'src/pages/speRecruit.html'),
+        recommend: resolve(__dirname, 'src/pages/recommend.html'),
+        userSetting: resolve(__dirname, 'src/pages/userSetting.html')
       }
     }
   }

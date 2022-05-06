@@ -60,14 +60,14 @@ export default {
 
 <template>
 <div class="container mx-auto" >
-    <div class="mb-6 xl:px-10"><RecruitHeader :headerinfo="headerInfo"></RecruitHeader></div>
-    <div class="flex gap-x-5 2xl:px-48 xl:px-24">
+    <div class="mb-6"><RecruitHeader :headerinfo="headerInfo"></RecruitHeader></div>
+    <div class="flex gap-x-5 xl:px-32">
         <div class="w-3/5 mb-10"><SpeRecruitContent :sperecruitinfo="speRecruitInfo"></SpeRecruitContent></div>
         <div class="w-2/5"><CompanyContent :companyinfo="companyInfo"></CompanyContent></div>
     </div>
     <div class="w-fit mx-auto mt-6 font-bold text-xl">实习地点</div>
     <div class="w-fit mx-auto textSm mt-2">武汉市光谷软件园XX大厦</div>
-    <div class="2xl:px-48 xl:px-24"><Maps></Maps></div>
+    <div class="xl:px-32"><Maps></Maps></div>
 </div>
 </template>
 

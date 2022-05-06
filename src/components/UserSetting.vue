@@ -21,12 +21,12 @@ var userInfo=[
 export default {
   data() {
     return {
-
+      currentPath:'个人资料'
     }
   },
   methods:{
       changeChoice(e){
-          
+          this.currentPath=e
       }
   },
   components:{
@@ -40,8 +40,8 @@ export default {
     <div class="container mx-auto xl:px-24">
         <UserHeader></UserHeader>
         <Switcher @changechoice="changeChoice" :choices="['个人资料','简历上传','我的收藏','我的投递','我的消息']"></Switcher>
-        <PersonalInfo :userinfo="userInfo"></PersonalInfo>
-        <Resume></Resume>
+        <PersonalInfo v-if="currentPath=='个人资料'" :userinfo="userInfo"></PersonalInfo>
+        <Resume v-if="currentPath=='简历上传'"></Resume>
     </div>
 </template>
 
