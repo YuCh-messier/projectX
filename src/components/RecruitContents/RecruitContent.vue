@@ -1,29 +1,14 @@
 <script setup>
-
-</script>
-
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  methods:{
-      goto(href){
-          window.location=href
-      }
-  },
-  components:{
-   
-  },
-  props:['content']
+import { host } from '../../scripts/publicFunctions';
+var props=defineProps(['content'])
+var affairId=props.content.affairId
+function goto(href){
+    window.location=host+href
 }
 </script>
 
 <template>
-    <div class="bg-white hover:cursor-pointer hover:text-orange-500 p-6 rounded-sm space-y-3" @click="goto(content.url)">
+    <div class="bg-white hover:cursor-pointer hover:text-orange-500 p-6 rounded-sm space-y-3" @click="goto('pages/speRecruit.html?affairId='+affairId+'&type=recruit')">
         <div class="flex">
             <div class="font-semibold w-1/2">{{content.title}}</div>
             <div class="w-1/4">{{content.workDays}}</div>

@@ -5,14 +5,22 @@ var affairId=props.content.affairId
 function goto(href){
     window.location=host+href
 }
+function myStatu(e){
+    if(e=='待浏览'){
+        return 'text-red-500'
+    }
+    else{
+        return (e=='已浏览')?'text-amber-500':'text-green-500'
+    }
+}
 </script>
 
 <template>
-    <div class="bg-white hover:cursor-pointer hover:text-orange-500 p-6 rounded-sm space-y-3" @click="goto('pages/speRecruit.html?affairId='+affairId+'&type=recommend')">
+    <div class="bg-white hover:cursor-pointer hover:text-orange-500 p-6 rounded-sm space-y-3" @click="goto('pages/mySpeRecruit.html?affairId='+affairId)">
         <div class="flex">
             <div class="font-semibold w-1/2">{{content.title}}</div>
-            <div class="w-1/4">{{content.workDays}}</div>
-            <div class="text-orange-500">{{content.salary}}</div>
+            <div :class="[myStatu(content.statu),'w-1/4']">{{content.statu}}</div>
+            <div class="text-sm">{{content.sendTime}}</div>
         </div>
         <div class="flex text-gray-500 text-sm">
             <div class="w-1/2">

@@ -1,9 +1,9 @@
 <script setup>
 import { toRefs,ref,watch } from 'vue';
-var props=defineProps(['choices'])
+var props=defineProps(['choices','currentchoice'])
+var currentChoice=ref(props.currentchoice)
 var emits=defineEmits(['changechoice'])
 var {choices}=toRefs(props)
-var currentChoice=ref('个人资料')
 watch(currentChoice,()=>{
     emits('changechoice',currentChoice.value)
 })

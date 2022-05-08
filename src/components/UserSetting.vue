@@ -3,6 +3,9 @@ import UserHeader from './UserSettings/UserHeader.vue';
 import Switcher from './Choices/Switcher.vue';
 import PersonalInfo from './UserSettings/PersonalInfo.vue';
 import Resume from './UserSettings/Resume.vue';
+import MessageList from './Messages/MessageList.vue';
+import MyRecruits from './MyRecruits.vue';
+import CollectList from './Collects/CollectList.vue'
 import { toRefs } from 'vue';
 var props=defineProps(['contents'])
 var userInfo=[
@@ -51,6 +54,21 @@ var userResume={
     }
   ]
 }
+var userMessages=[
+  {
+    title:'您的飞书实习申请通过',
+    sender:'金领工场官方',
+    sendTime:'2022/05/07 13:47',
+    senderGraph:'',
+    content:'感谢您通过飞书实习申请，请添加微信1181119044获取详细内容'
+  },{
+    title:'您的飞书实习申请通过',
+    sender:'金领工场官方',
+    sendTime:'2022/05/07 13:47',
+    senderGraph:'',
+    content:'感谢您通过飞书实习申请，请添加微信1181119044获取详细内容'
+  }
+]
 </script>
 
 <script>
@@ -76,9 +94,12 @@ export default {
 <template>
     <div class="container mx-auto xl:px-24">
         <UserHeader></UserHeader>
-        <Switcher @changechoice="changeChoice" :choices="['个人资料','简历上传','我的收藏','我的投递','我的消息']"></Switcher>
+        <Switcher @changechoice="changeChoice" currentchoice="个人资料" :choices="['个人资料','简历上传','上传附件','我的收藏','我的投递','我的消息']"></Switcher>
         <PersonalInfo v-if="currentPath=='个人资料'" :userinfo="userInfo"></PersonalInfo>
         <Resume v-if="currentPath=='简历上传'" :userresume="userResume"></Resume>
+        <MessageList v-if="currentPath=='我的消息'" :messages="userMessages"></MessageList>
+        <MyRecruits v-if="currentPath=='我的投递'" :willu="0"></MyRecruits>
+        <CollectList v-if="currentPath=='我的收藏'"></CollectList>
     </div>
 </template>
 

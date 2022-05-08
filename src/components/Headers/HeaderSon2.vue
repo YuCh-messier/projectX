@@ -22,7 +22,7 @@ function goto(url){
       <el-dropdown-menu>
         <el-dropdown-item @click="goto('recruits.html')">招聘信息</el-dropdown-item>
         <el-dropdown-item @click="goto('recommend.html')">实习内推</el-dropdown-item>
-        <el-dropdown-item @click="goto('myRecruit.html')">我的投递</el-dropdown-item>
+        <el-dropdown-item @click="goto('myRecruits.html')">我的投递</el-dropdown-item>
       </el-dropdown-menu>
     </template>
     </el-dropdown>

@@ -1,5 +1,5 @@
 <script setup>
-import RecruitContent from './RecruitContent.vue'
+import MyRecruitContent from './MyRecruitContent.vue'
 import { toRefs } from 'vue';
 var props=defineProps(['contents'])
 var {contents}=toRefs(props)
@@ -7,7 +7,7 @@ var {contents}=toRefs(props)
 
 <template>
     <div>
-        <RecruitContent class="my-5" v-for="content in contents" :key="content.id" :content="content"></RecruitContent>
+        <MyRecruitContent class="my-5" v-for="content in contents" :key="content.id" :content="content"></MyRecruitContent>
     </div>
 </template>
 

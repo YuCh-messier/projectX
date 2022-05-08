@@ -3,68 +3,24 @@ import Ppt from './Ppts/Ppt.vue'
 import SearchBox from './Choices/SearchBox.vue';
 import TapBox from './Choices/TapBox.vue';
 import RecruitList from './RecruitContents/RecruitList.vue';
+import { ref } from 'vue';
+import { getDatas} from '../scripts/publicFunctions'
 
-var choices=[
-        ['光谷','武璐路','南湖大道'],
-        ['金融','会计','前端','算法'],
-        ['4天以下','4天','5天','6天'],
-        ['小于200','200-300','300-400','400以上']
-]
-var ppts=[
-    {url:'#',graph:''},
-    {url:'#',graph:''},
-    {url:'#',graph:''},
-    {url:'#',graph:''}
-]
-var contents=[
-    {
-    affairId:1,
-    title:'飞书前端实习生招聘',
-    taps:'互联网|前端|实习',
-    companyTaps:'互联网|前端|实习',
-    companyName:'字节跳动',
-    address:'光谷软件园',
-    graph:'',
-    workDays:'4天',
-    salary:'400-500',
-    url:'#'
-},{
-    affairId:1,
-    title:'飞书前端实习生招聘',
-    taps:'互联网|前端|实习',
-    companyTaps:'互联网|前端|实习',
-    companyName:'字节跳动',
-    address:'光谷软件园',
-    graph:'',
-    workDays:'4天',
-    salary:'400-500',
-    url:'#'
-}
-]
-</script>
+var choices=ref([])
+var contents=ref([])
+var ppts=ref([])
 
-<script>
+getDatas((e)=>{contents.value=e},'recruits/allRecruits')
+getDatas((e)=>{choices.value=e},'choices/allRecruitsTaps')
+getDatas((e)=>{ppts.value=e},'ppts/setPpts')
 
-export default {
-  data() {
-    return {
-       
+function searchFunction(keyWord){
+    console.log(keyWord)
     }
-  },
-  methods:{
-      searchFunction(keyWord){
-          console.log(keyWord)
-      },
-      tapsfunction(taps){
-          console.log(taps)
-      }
-  },
-  components:{
-   
-  },
-  props:[],
-  emits:[]
-}
+
+function tapsfunction(taps){
+    console.log(taps)
+    }
 </script>
 
 <template>

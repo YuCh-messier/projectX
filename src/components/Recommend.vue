@@ -1,52 +1,14 @@
 <script setup>
 import SearchBox from './Choices/SearchBox.vue';
 import RecommendList from './RecommendContents/RecommendList.vue';
+import { ref } from 'vue';
+import { getDatas} from '../scripts/publicFunctions'
 
-var contents=[
-    {
-    affairId:1,
-    title:'飞书前端实习生招聘',
-    taps:'互联网|前端|实习',
-    companyTaps:'互联网|前端|实习',
-    companyName:'字节跳动',
-    address:'光谷软件园',
-    graph:'',
-    workDays:'4天',
-    salary:'400-500',
-    url:'#'
-},{
-    affairId:1,
-    title:'飞书前端实习生招聘',
-    taps:'互联网|前端|实习',
-    companyTaps:'互联网|前端|实习',
-    companyName:'字节跳动',
-    address:'光谷软件园',
-    graph:'',
-    workDays:'4天',
-    salary:'400-500',
-    url:'#'
-}
-]
-</script>
+var contents=ref([])
+getDatas((e)=>{contents.value=e},'recommends/allRecommends')
 
-<script>
-
-export default {
-  data() {
-    return {
-       
-    }
-  },
-  methods:{
-      searchFunction(keyWord){
-          console.log(keyWord)
-      }
-  },
-  components:{
-   
-  },
-  props:[],
-  emits:[]
+function searchFunction(keyWord){
+    console.log(keyWord)
 }
 </script>
 
