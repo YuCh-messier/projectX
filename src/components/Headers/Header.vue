@@ -21,7 +21,7 @@ function goto(url){
     <div id="logo" class="col-start-1 col-end-3"><img src="" alt="" class="bg-pink-500 w-full h-fit"></div>
 
     <div id="middlePart" class="col-start-3 col-end-9 flexStandard">
-      <div class="headerHoverPattern">首页{{name}}</div>
+      <div class="headerHoverPattern">首页</div>
 
       <Son1 class="headerHoverPattern"></Son1>
       <Son2 class="headerHoverPattern"></Son2>
@@ -31,8 +31,8 @@ function goto(url){
 
     <div></div>
 
-    <div id="headImg" v-if="user.statu"><img @click="goto('pages/userSetting.html')" class="rounded-[100%] bg-pink-500 w-10 h-10 headerHoverPattern" :src="user.userInfo.headImg" alt=""></div>
-    <div class="col-start-11 col-end-13" v-if="user.statu">欢迎使用！{{user.userInfo.name}}</div>
+    <div id="headImg" v-if="user.statu"><img @click="goto('pages/userSetting.html')" class="rounded-[100%] bg-gray-200 w-10 h-10 headerHoverPattern" :src="user.headImg" alt=""></div>
+    <div class="col-start-11 col-end-13" v-if="user.statu">欢迎使用！{{user.name}}</div>
     <div v-else class="flex"><el-button class="buttonStandard">登录</el-button><el-button class="buttonStandard" :icon="Search">注册</el-button></div>
   </div>
 </div>

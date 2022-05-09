@@ -1,5 +1,7 @@
 <script setup>
 import { Search } from '@element-plus/icons-vue'
+import { ref } from 'vue';
+var keyWord=ref('')
 var emits=defineEmits(['searchfunction'])
 </script>
 

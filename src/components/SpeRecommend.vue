@@ -4,7 +4,7 @@ import SpeRecruitContent from './RecruitContents/SpeRecruitContent.vue';
 import CompanyContent from './CompanyContents/CompanyContent.vue';
 import Maps from './Maps/Map.vue'
 import { ref } from 'vue';
-import { checkAccount, getDatas} from '../scripts/publicFunctions'
+import { checkAccount, getDatas,checkSpecialAccount} from '../scripts/publicFunctions'
 import { getQueryVariable } from '../scripts/publicFunctions';
 import { getDatasP } from '../scripts/publicFunctions';
 import { userKey } from '../scripts/publicFunctions'
@@ -16,6 +16,7 @@ var speRecruitInfo=ref({})
 var companyInfo=ref({})
 var mapInfo=ref({address:''})
 var ifCollect=ref(false)
+var affairKey=ref('')
 
 getDatas((e)=>{
     console.log(e)
@@ -23,14 +24,15 @@ getDatas((e)=>{
     speRecruitInfo.value=e.speRecruitInfo
     companyInfo.value=e.companyInfo
     mapInfo.value=e.mapInfo
+    affairKey.value=e.affairKey
     },
-    'recruits/speRecruit',
+    'recruits/speRecommend',
     {affairId:affairId,type:type}
     )
 
 checkAccount((e)=>{
   if(e.statu){
-    getDatasP((e2)=>{ifCollect.value=(e2=='success')?true:false},'collect/checkCollect',{affairId:affairId,...userKey,type:'recruit'})
+    getDatasP((e2)=>{ifCollect.value=(e2=='success')?true:false},'collect/checkCollect',{affairId:affairId,...userKey,type:'recommend'})
   }
   else{
     alert('请登录先')
@@ -38,21 +40,21 @@ checkAccount((e)=>{
 })
 
 function setRecruit(){
-  checkAccount((e)=>{
+  checkSpecialAccount((e)=>{
   if(e.statu){
-    getDatasP((e2)=>{alert(e2)},'myrecruits/setRecruit',{affairId:affairId,...userKey,type:'recruit'})
+    getDatasP((e2)=>{alert(e2)},'myrecruits/setRecruit',{affairId:affairId,...userKey,type:'recommend'})
   }
   else{
     alert('请登录先')
   }
-  })
+  },affairKey.value)
 }
 
 function setCollect(){
   checkAccount((e)=>{
     if(e.statu){
       ifCollect.value=true
-      getDatasP((e2)=>{alert(e2)},'collect/setCollect',{affairId:affairId,...userKey,type:'recruit'})
+      getDatasP((e2)=>{alert(e2)},'collect/setCollect',{affairId:affairId,...userKey,type:'recommend'})
     }
     else{
       alert('请登录先')

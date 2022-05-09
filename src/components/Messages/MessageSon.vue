@@ -9,7 +9,7 @@ var {message}=toRefs(props)
 <template>
     <div class="bg-white p-4 rounded">
         <div class="flex items-center gap-x-3">
-            <div class="rounded-[100%] bg-pink-200 w-12 h-12"><img src="" alt=""></div>
+            <div class="rounded-[100%] bg-gray-200 w-12 h-12"><img :src="message.senderGraph" alt=""></div>
             <div class="text-sm">
                 <div>{{message.sender}}</div>
                 <div class="textSm">{{message.sendTime}}</div>

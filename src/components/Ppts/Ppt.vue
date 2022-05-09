@@ -11,10 +11,10 @@ function goto(href){
 
 <template>
     <div id="ppt" class="gap-5 m-5">
-        <div style="grid-area: a;" class="bg-pink-200"><img class="picFullMode" :src="ppts[0].graph" alt="" @click="goto(ppts[0].url)"/></div>
-        <div style="grid-area: b;" class="bg-pink-200"><img class="picFullMode" :src="ppts[1].graph" alt="" @click="goto(ppts[1].url)"/></div>
-        <div style="grid-area: c;" class="bg-pink-200"><img class="picFullMode" :src="ppts[2].graph" alt="" @click="goto(ppts[2].url)"/></div>
-        <div style="grid-area: d;" class="bg-pink-200"><img class="picFullMode" :src="ppts[3].graph" alt="" @click="goto(ppts[3].url)"/></div>
+        <div :style="'grid-area: a;background-position: center;background-size: cover;background-image: url('+ppts[0].graph+');'" class="bg-pink-200 hover:cursor-pointer" @click="goto(ppts[0].url)"></div>
+        <div :style="'grid-area: b;background-position: center;background-size: cover;background-image: url('+ppts[1].graph+');'" class="bg-pink-200 hover:cursor-pointer" @click="goto(ppts[1].url)"></div>
+        <div :style="'grid-area: c;background-position: center;background-size: cover;background-image: url('+ppts[2].graph+');'" class="bg-pink-200 hover:cursor-pointer" @click="goto(ppts[2].url)"></div>
+        <div :style="'grid-area: d;background-position: center;background-size: cover;background-image: url('+ppts[3].graph+');'" class="bg-pink-200 hover:cursor-pointer" @click="goto(ppts[3].url)"></div>
     </div>
 </template>
 

@@ -5,12 +5,39 @@ var host='http://localhost:3000/'
 //后端host
 var serverHost='http://localhost:3001/'
 
+var userKey={
+    telepone:'13272732651',
+    token:'ADCOIHAN'
+}
+
 // 检测登录状态
 function checkAccount(hAV){
-    $.post(serverHost+'check/checkUser',
-    {telepone:'13272732651',token:'DSHOUCS'},
+    if(true){//cookie
+        $.post(serverHost+'check/checkUser',
+        userKey,
+        (data,statu)=>{
+            if(statu=='success'){
+                hAV(data)
+            }
+            else{
+                alert('出错了')
+            }
+        })
+    }
+    else{hAV({statu:false})}
+}
+
+//检测特殊权限
+function checkSpecialAccount(hAV,affairKey){
+    $.post(serverHost+'check/checkSpecialAccount',
+    {...userKey,affairKey:affairKey},
     (data,statu)=>{
-        hAV(data)
+        if(statu=='success'){
+            hAV(data)
+        }
+        else{
+            alert('出错了')
+        }
     })
 }
 
@@ -24,7 +51,7 @@ function getDatas(hAV,route,dataO={}){
                 hAV(data)
             }
             else{
-                hAV(false)
+                alert('出错了')
             }
         }
     )
@@ -39,7 +66,7 @@ function getDatasP(hAV,route,dataO={}){
                 hAV(data)
             }
             else{
-                hAV(false)
+                alert('出错了')
             }
         }
     )
@@ -101,3 +128,5 @@ export {serverHost}
 export {getDatas}
 export {getDatasP}
 export {getQueryVariable}
+export {userKey}
+export {checkSpecialAccount}

@@ -32,7 +32,7 @@ function myStatu(e){
         </div>
         <div class="flex items-center text-gray-500 text-sm pt-4" style="border-top:1px solid #ddd">
             <div class="flex w-1/2 items-center">
-                <div class="w-10 h-10 mr-3 bg-pink-200 rounded-[100%]"><img :src="content.graph" class="truncate" alt=""></div>
+                <div class="w-10 h-10 mr-3 bg-pink-200 rounded-[100%] truncate"><img :src="content.graph" alt=""></div>
                 <div class="text-black">{{content.companyName}}</div>
             </div>
             <div>{{content.companyTaps}}</div>

@@ -5,7 +5,41 @@ var props=defineProps(['userresume'])
 var {userresume}=toRefs(props)
 var emits=defineEmits(['getback'])
 var submitUserResume=function(){
+  var eduList=userresume.value.educateView
+  var internList=userresume.value.internshipView
+  var projectList=userresume.value.projectView
+  if(userresume.overView==''){
+      alert('内容不完整')
+      return 
+  }
+  for(let i=0;i<eduList.length;i++){
+    if(!checkBlank(eduList[i])){
+      alert('内容不完整')
+      return
+    }
+  }
+  for(let i=0;i<internList.length;i++){
+  if(!checkBlank(internList[i])){
+    alert('内容不完整')
+    return
+  }
+}
+  for(let i=0;i<projectList.length;i++){
+  if(!checkBlank(projectList[i])){
+    alert('内容不完整')
+    return
+  }
+}
     emits('getback',userresume)
+}
+function checkBlank(obj){
+  var items=Object.values(obj)
+  for(let i=0;i<items.length;i++){
+    if(items[i]==''){
+      return false
+    }
+  }
+  return true
 }
 </script>
 

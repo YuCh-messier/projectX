@@ -1,7 +1,14 @@
 <script setup>
 import MyRecruitList from './MyRecruits/MyRecruitList.vue';
 import { ref } from 'vue';
-import { getDatas} from '../scripts/publicFunctions'
+import { getDatas,checkAccount} from '../scripts/publicFunctions'
+
+checkAccount((e)=>{
+    if(!e.statu){
+        alert('请先登录！')
+        window.history.back()
+    }
+})
 
 var {willu}=defineProps(['willu'])
 var contents=ref([])

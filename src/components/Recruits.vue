@@ -10,13 +10,19 @@ var choices=ref([])
 var contents=ref([])
 var ppts=ref([])
 
-getDatas((e)=>{contents.value=e},'recruits/allRecruits')
+getDatas((e)=>{contents.value=e},'recruits/allRecruits',{type:'recruit'})
 getDatas((e)=>{choices.value=e},'choices/allRecruitsTaps')
 getDatas((e)=>{ppts.value=e},'ppts/setPpts')
 
 function searchFunction(keyWord){
+    if(keyWord==''){
+        getDatas((e)=>{contents.value=e},'recruits/allRecruits',{type:'recruit'})
+    }
+    else{
+    getDatas((e)=>{contents.value=e},'recruits/searchRecruits',{keyWord:keyWord,type:'recruit'})
     console.log(keyWord)
     }
+}
 
 function tapsfunction(taps){
     console.log(taps)

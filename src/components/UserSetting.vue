@@ -7,22 +7,30 @@ import MessageList from './Messages/MessageList.vue';
 import MyRecruits from './MyRecruits.vue';
 import CollectList from './Collects/CollectList.vue'
 import { toRefs,ref } from 'vue';
-import { getDatas } from '../scripts/publicFunctions';
-import { getDatasP } from '../scripts/publicFunctions';
+import { getDatas,userKey } from '../scripts/publicFunctions';
+import { getDatasP,checkAccount } from '../scripts/publicFunctions';
 
 var userInfo=ref([])
 var userResume=ref({})
 var userMessages=ref([])
 var collects=ref([])
 var currentPath=ref('个人资料')
+var standardInfo=ref({})
 
+checkAccount((e)=>{
+    if(!e.statu){
+        alert('请先登录！')
+        window.history.back()
+    }
+})
 getDatas((e)=>{
   userInfo.value=e.userInfo
   userResume.value=e.userResume
   userMessages.value=e.userMessages
   collects.value=e.collects
+  standardInfo.value=e.standardInfo
 },'user/getUserInfo',
-{telephone:'13272732651',token:'ASHNOICA'})
+userKey)
 
 function sendInfo(e){
   getDatasP((e)=>{console.log(e)},'user/setUserInfo',e)
@@ -39,7 +47,7 @@ function changeChoice(e){
 
 <template>
     <div class="container mx-auto xl:px-24">
-        <UserHeader :userinfo="userInfo"></UserHeader>
+        <UserHeader :standardinfo="standardInfo"></UserHeader>
         <Switcher @changechoice="changeChoice" currentchoice="个人资料" :choices="['个人资料','简历上传','上传附件','我的收藏','我的投递','我的消息']"></Switcher>
         <PersonalInfo v-if="currentPath=='个人资料'" :userinfo="userInfo" @sendinfo="sendInfo"></PersonalInfo>
         <Resume v-if="currentPath=='简历上传'" :userresume="userResume" @sendresume="sendResume"></Resume>

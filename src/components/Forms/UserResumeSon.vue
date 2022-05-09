@@ -34,12 +34,18 @@ function addSon(){
     }
 }
 
+function deleteSon(i){
+    var a=window.confirm('是否删除？')
+    if(a){
+        resumeson.value.splice(i,1)
+    }
+}
 </script>
 
 <template>
     <div><button class="buttonStandardDark float-right" @click="addSon">添加</button>
         <div class="w-full mb-6" v-for="resume,index in resumeson" :key="resume.timePeriod">
-            <div class="text-md font-semibold">经历{{index+1}}</div>
+            <div class="text-md font-semibold inline-block mr-5">经历{{index+1}}</div><button class="buttonStandardLight inline-block" @click="deleteSon(index)">删除</button>
             <div class="my-3 flex" v-for="content,title in resume" :key="title">
                 <div class="text-gray-500 w-1/5">{{title}}</div>
                 <textarea class="bg-inherit border hover:border-amber-400 w-1/3" v-model="resumeson[index][title]" v-if="title=='经历简介'"></textarea>

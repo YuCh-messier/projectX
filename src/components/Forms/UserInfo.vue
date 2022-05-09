@@ -4,6 +4,12 @@ var props=defineProps(['userinfo'])
 var emits=defineEmits(['getback'])
 var {userinfo}=toRefs(props)
 var submitUserInfo=function(){
+    for(let i=0;i<userinfo.value.length;i++){
+        if(userinfo.value[i].content==''){
+            alert('内容不完整')
+            return
+        }
+    }
     emits('getback',userinfo)
 }
 </script>

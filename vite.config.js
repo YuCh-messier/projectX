@@ -34,7 +34,8 @@ export default defineConfig({
         recommend: resolve(__dirname, 'src/pages/recommend.html'),
         userSetting: resolve(__dirname, 'src/pages/userSetting.html'),
         mySpeRecruit: resolve(__dirname, 'src/pages/mySpeRecruit.html'),
-        myRecruits: resolve(__dirname, 'src/pages/myRecruits.html')
+        myRecruits: resolve(__dirname, 'src/pages/myRecruits.html'),
+        speRecommend: resolve(__dirname,  'src/pages/speRecommend.html')
       }
     }
   }

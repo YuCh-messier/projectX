@@ -9,8 +9,8 @@
             <div>沪公网安备31011002002436号 |儿童色情信息举报专区 |扫黄打非举报</div>
             <div>加入我们</div>
             <div class="flex gap-x-12">
-                <img src="" alt="" class="w-24 h-0 pb-24 bg-pink-400">
-                <img src="" alt="" class="w-24 h-0 pb-24 bg-pink-400">
+                <img src="http://124.223.155.169/testpic/pic3.jpg" alt="QQ迎新群" class="w-24 h-24"/>
+                <img src="http://124.223.155.169/testpic/pic3.jpg" alt="QQ迎新群" class="w-24 h-24"/>
             </div>
             <div>介绍</div>
         </div>

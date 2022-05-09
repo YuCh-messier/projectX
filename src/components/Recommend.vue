@@ -8,7 +8,14 @@ var contents=ref([])
 getDatas((e)=>{contents.value=e},'recommends/allRecommends')
 
 function searchFunction(keyWord){
+    if(keyWord==''){
+        alert('haha')
+        getDatas((e)=>{contents.value=e},'recommends/allRecommends')
+    }
+    else{
+    getDatas((e)=>{contents.value=e},'recruits/searchRecommends',{keyWord:keyWord,type:'recommend'})
     console.log(keyWord)
+    }
 }
 </script>
 
