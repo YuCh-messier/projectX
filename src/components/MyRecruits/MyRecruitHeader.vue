@@ -5,23 +5,6 @@ var props=defineProps(['headerinfo'])
 var {headerinfo}=toRefs(props)
 </script>
 
-<script>
-
-export default {
-  data() {
-    return {
-       
-    }
-  },
-  methods:{
-
-  },
-  components:{
-   
-  }
-}
-</script>
-
 <template>
 <div class="flex justify-around p-6">
     <div class="text-xl flex gap-y-4 flex-col">

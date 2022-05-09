@@ -8,21 +8,6 @@ function changeStatu(){
 }
 </script>
 
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  components:{
-   
-  },
-  props:[]
-}
-</script>
-
 <template>
     <div v-if="statu==0">
         <div class="flex justify-between items-center my-5 px-10">

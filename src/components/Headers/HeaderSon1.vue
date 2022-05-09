@@ -2,10 +2,6 @@
 import { ArrowDown } from '@element-plus/icons-vue'
 </script>
 
-<script>
-
-</script>
-
 <template>
     <el-dropdown class="hover:text-orange-400">
     <span class="el-dropdown-link">

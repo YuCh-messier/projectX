@@ -13,21 +13,6 @@ function setChoice(e){
 }
 </script>
 
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  components:{
-   
-  },
-  props:[]
-}
-</script>
-
 <template>
     <div class="flex gap-5 textSm p-4" style="border:1px solid #ddd">
         <div :class="{'headerHoverPattern':true,'text-gray-900':(choice==currentChoice)}" v-for="choice in choices" :key="choice" @click="setChoice(choice)">

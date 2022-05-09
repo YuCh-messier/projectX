@@ -8,20 +8,6 @@ watch(checkBoxs.value,()=>{emits('tapsfunction',checkBoxs.value)})
 
 </script>
 
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  components:{
-   
-  }
-}
-</script>
-
 <template>
 <div class="space-y-3">
   <div class="demo-button-style flex items-center">

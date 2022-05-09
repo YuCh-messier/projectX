@@ -2,25 +2,14 @@
 import { toRefs,ref } from 'vue';
 import UserInfo from '../Forms/UserInfo.vue';
 var props=defineProps(['userinfo'])
+var emits=defineEmits(['sendinfo'])
 var {userinfo}=toRefs(props)
 var statu=ref(0)
-function changeStatu(){
+function changeStatu(e){
+  if(statu.value==1){
+    emits('sendinfo',e)
+  }
   statu.value=(statu.value==0)?1:0
-}
-</script>
-
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  components:{
-   
-  },
-  props:[]
 }
 </script>
 

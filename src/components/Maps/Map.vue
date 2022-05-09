@@ -1,26 +1,7 @@
 <script setup>
 import { toRefs } from 'vue';
-var props=defineProps(['mapInfo'])
+var props=defineProps(['mapinfo'])
 
-</script>
-
-<script>
-
-export default {
-  data() {
-    return {
-       
-    }
-  },
-  methods:{
-
-  },
-  components:{
-   
-  },
-  props:[],
-  emits:[]
-}
 </script>
 
 <template>

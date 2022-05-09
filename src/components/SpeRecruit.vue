@@ -13,49 +13,42 @@ var type=getQueryVariable('type')
 var headerInfo=ref({})
 var speRecruitInfo=ref({})
 var companyInfo=ref({})
+var mapInfo=ref({address:''})
+var ifCollect=ref(false)
+
 getDatas((e)=>{
     console.log(e)
     headerInfo.value=e.headerInfo
     speRecruitInfo.value=e.speRecruitInfo
     companyInfo.value=e.companyInfo
+    mapInfo.value=e.mapInfo
     },
     'recruits/speRecruit',
     {affairId:affairId,type:type}
     )
 
+getDatasP((e)=>{ifCollect.value=(e=='success')?true:false},'collect/checkCollect',{affairId:affairId,telephone:'13272732651'})
+
 function setRecruit(){
   getDatasP((e)=>{alert(e)},'myrecruits/setRecruit',{affairId:affairId,telephone:'13272732651'})
 }
-</script>
 
-<script>
-
-export default {
-  data() {
-    return {
-       
-    }
-  },
-  methods:{
-
-  },
-  components:{
-   
-  },
-  props:[]
+function setCollect(){
+  ifCollect.value=true
+  getDatasP((e)=>{alert(e)},'collect/setCollect',{affairId:affairId,telephone:'13272732651'})
 }
 </script>
 
 <template>
-<div class="container mx-auto" >
-    <div class="mb-6"><RecruitHeader @setrecruit="setRecruit" :headerinfo="headerInfo"></RecruitHeader></div>
+<div class="container mx-auto">
+    <div class="mb-6"><RecruitHeader @setcollect="setCollect" @setrecruit="setRecruit" :ifcollect="!ifCollect" :headerinfo="headerInfo"></RecruitHeader></div>
     <div class="flex gap-x-5 xl:px-32">
         <div class="w-3/5 mb-10"><SpeRecruitContent :sperecruitinfo="speRecruitInfo"></SpeRecruitContent></div>
         <div class="w-2/5"><CompanyContent :companyinfo="companyInfo"></CompanyContent></div>
     </div>
     <div class="w-fit mx-auto mt-6 font-bold text-xl">实习地点</div>
-    <div class="w-fit mx-auto textSm mt-2">武汉市光谷软件园XX大厦</div>
-    <div class="xl:px-32"><Maps></Maps></div>
+    <div class="w-fit mx-auto textSm mt-2">{{mapInfo.address}}</div>
+    <div class="xl:px-32"><Maps :mapinfo="mapInfo"></Maps></div>
 </div>
 </template>
 

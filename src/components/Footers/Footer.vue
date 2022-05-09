@@ -2,21 +2,6 @@
 
 </script>
 
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  components:{
-   
-  },
-  props:[]
-}
-</script>
-
 <template>
     <div>
         <div id="footer" class="container mx-auto text-sm textSm flexStandard flex-col gap-y-2 py-6">

@@ -1,31 +1,18 @@
 <script setup>
 import Son1 from './HeaderSon1.vue'
 import Son2 from './HeaderSon2.vue'
-</script>
+import { host } from '../../scripts/publicFunctions';
 
-<script>
-
-export default {
-  data() {
-    return {
-      headerParts:[
+var props=defineProps(['user'])
+var headerParts=[
           {id:2,value:'金领活动',url:''},
           {id:3,value:'职前培训',url:''},
           {id:4,value:'商务合作',url:''}
-      ],
-      host:'http://localhost:3000/pages/'
-    }
-  },
-  methods:{
-    goto(url){
-      window.location=this.host+url
-    }
-  },
-  components:{
-    Son1,Son2
-  },
-  props:['user']
-}
+      ]
+
+function goto(url){
+    window.location=host+url
+  }
 </script>
 
 <template>
@@ -44,7 +31,7 @@ export default {
 
     <div></div>
 
-    <div id="headImg" v-if="user.statu"><img @click="goto('userSetting.html')" class="rounded-[100%] bg-pink-500 w-10 h-10 headerHoverPattern" :src="user.userInfo.headImg" alt=""></div>
+    <div id="headImg" v-if="user.statu"><img @click="goto('pages/userSetting.html')" class="rounded-[100%] bg-pink-500 w-10 h-10 headerHoverPattern" :src="user.userInfo.headImg" alt=""></div>
     <div class="col-start-11 col-end-13" v-if="user.statu">欢迎使用！{{user.userInfo.name}}</div>
     <div v-else class="flex"><el-button class="buttonStandard">登录</el-button><el-button class="buttonStandard" :icon="Search">注册</el-button></div>
   </div>

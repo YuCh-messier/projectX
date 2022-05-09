@@ -4,25 +4,6 @@ var props=defineProps(['sperecruitinfo'])
 var {sperecruitinfo}=toRefs(props)
 </script>
 
-<script>
-
-export default {
-  data() {
-    return {
-       
-    }
-  },
-  methods:{
-
-  },
-  components:{
-   
-  },
-  props:[],
-  emits:[]
-}
-</script>
-
 <template>
 <div class="bg-white p-6 rounded whitespace-pre-line text-md leading-7">
     {{sperecruitinfo.content}}

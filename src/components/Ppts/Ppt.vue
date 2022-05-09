@@ -1,26 +1,11 @@
 <script setup>
 import { toRefs } from 'vue';
+import { host } from '../../scripts/publicFunctions';
 var props=defineProps(['ppts'])
 var {ppts}=toRefs(props)
-</script>
 
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  methods:{
-      goto(href){
-          window.location=href
-      }
-  },
-  components:{
-   
-  },
-  props:[]
+function goto(href){
+    window.location=href
 }
 </script>
 

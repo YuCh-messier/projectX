@@ -1,9 +1,10 @@
 <script setup>
 import { ref,toRefs } from 'vue';
-import { MostlyCloudy } from '@element-plus/icons-vue';
+import { MostlyCloudy,Check } from '@element-plus/icons-vue';
 
-var props=defineProps(['headerinfo'])
-var emits=defineEmits(['setrecruit'])
+var props=defineProps(['headerinfo','ifcollect'])
+var emits=defineEmits(['setrecruit','setcollect'])
+var {ifcollect}=toRefs(props)
 var {headerinfo}=toRefs(props)
 
 </script>
@@ -14,7 +15,8 @@ var {headerinfo}=toRefs(props)
         <div class="font-bold">{{headerinfo.title}}</div>
         <div class="textSm">{{headerinfo.address}}</div>
         <div>
-            <button class="buttonBigDark mr-6"><MostlyCloudy class="inline" style="width: 1em; height: 1em; margin-right: 4px" />收藏</button>
+            <button v-if="ifcollect" class="buttonBigDark mr-6" @click="emits('setcollect')"><MostlyCloudy class="inline" style="width: 1em; height: 1em; margin-right: 4px"/>收藏</button>
+            <button v-else class="buttonDisabled mr-6" @click="emits('setcollect')"><Check class="inline" style="width: 1em; height: 1em; margin-right: 4px"/>已收藏</button>
             <button class="buttonBigLight" @click="emits('setrecruit')">投递</button>
         </div>
     </div>

@@ -6,24 +6,6 @@ var props=defineProps(['message'])
 var {message}=toRefs(props)
 </script>
 
-<script>
-
-export default {
-  data() {
-    return {
-      
-    }
-  },
-  components:{
-   
-  },
-  methods:{
-
-  },
-  props:[]
-}
-</script>
-
 <template>
     <div class="bg-white p-4 rounded">
         <div class="flex items-center gap-x-3">

@@ -36,21 +36,6 @@ function addSon(){
 
 </script>
 
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  components:{
-   
-  },
-  props:[]
-}
-</script>
-
 <template>
     <div><button class="buttonStandardDark float-right" @click="addSon">添加</button>
         <div class="w-full mb-6" v-for="resume,index in resumeson" :key="resume.timePeriod">

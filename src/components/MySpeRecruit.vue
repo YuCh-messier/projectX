@@ -16,6 +16,8 @@ var companyInfo=ref({})
 var userInfo=ref([])
 var userResume=ref({})
 var recruitStatu=ref([])
+var mapInfo=ref({address:''})
+
 getDatas((e)=>{
   headerInfo.value=e.headerInfo
   speRecruitInfo.value=e.speRecruitInfo
@@ -23,35 +25,19 @@ getDatas((e)=>{
   userInfo.value=e.userInfo
   userResume.value=e.userResume
   recruitStatu.value=e.recruitStatu
+  mapInfo.value=e.mapInfo
 },
 'myRecruits/showMyRecruit',
 {affairId:affairId}
 )
 
-</script>
-
-<script>
-
-export default {
-  data() {
-    return {
-       
+function myStatu(e){
+    if(e=='待浏览'){
+        return 'text-red-500'
     }
-  },
-  methods:{
-    myStatu(e){
-        if(e=='待浏览'){
-            return 'text-red-500'
-        }
-        else{
-            return (e=='已浏览')?'text-amber-500':'text-green-500'
-        }
+    else{
+        return (e=='已浏览')?'text-amber-500':'text-green-500'
     }
-  },
-  components:{
-   
-  },
-  props:[]
 }
 </script>
 
@@ -63,7 +49,7 @@ export default {
         <div class="w-2/5"><MysendedInfo :userinfo="userInfo"></MysendedInfo></div>
     </div>
     <div class="w-fit mx-auto mt-6 font-bold text-xl">实习地点</div>
-    <div class="w-fit mx-auto textSm mt-2">武汉市光谷软件园XX大厦</div>
+    <div class="w-fit mx-auto textSm mt-2">{{mapInfo.address}}</div>
     <div class="xl:px-32"><MySendedResume :userresume="userResume"></MySendedResume></div>
     <div>
         <div class="w-fit mx-auto mt-6 font-bold text-xl">当前状态</div>

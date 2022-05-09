@@ -1,13 +1,10 @@
 <script setup>
 import { ArrowDown } from '@element-plus/icons-vue'
-var host='http://localhost:3000/pages/'
+import { host } from '../../scripts/publicFunctions';
+
 function goto(url){
     window.location=host+url
   }
-</script>
-
-<script>
-
 </script>
 
 <template>
@@ -20,9 +17,9 @@ function goto(url){
     </el-icon>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item @click="goto('recruits.html')">招聘信息</el-dropdown-item>
-        <el-dropdown-item @click="goto('recommend.html')">实习内推</el-dropdown-item>
-        <el-dropdown-item @click="goto('myRecruits.html')">我的投递</el-dropdown-item>
+        <el-dropdown-item @click="goto('pages/recruits.html')">招聘信息</el-dropdown-item>
+        <el-dropdown-item @click="goto('pages/recommend.html')">实习内推</el-dropdown-item>
+        <el-dropdown-item @click="goto('pages/myRecruits.html')">我的投递</el-dropdown-item>
       </el-dropdown-menu>
     </template>
     </el-dropdown>

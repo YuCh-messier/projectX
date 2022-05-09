@@ -4,21 +4,6 @@ var props=defineProps(['resumeson'])
 var {resumeson}=toRefs(props)
 </script>
 
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  components:{
-   
-  },
-  props:[]
-}
-</script>
-
 <template>
     <div>
         <div class="w-full mb-6" v-for="resume,index in resumeson" :key="resume.timePeriod">

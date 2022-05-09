@@ -1,21 +1,6 @@
 <script setup>
 import { Search } from '@element-plus/icons-vue'
-</script>
-
-<script>
-
-export default {
-  data() {
-    return {
-        keyWord:''
-    }
-  },
-  components:{
-   
-  },
-  props:[],
-  emits:['searchfunction']
-}
+var emits=defineEmits(['searchfunction'])
 </script>
 
 <template>

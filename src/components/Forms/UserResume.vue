@@ -5,23 +5,7 @@ var props=defineProps(['userresume'])
 var {userresume}=toRefs(props)
 var emits=defineEmits(['getback'])
 var submitUserResume=function(){
-    console.log(userresume)
-    emits('getback')
-}
-</script>
-
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  components:{
-   
-  },
-  props:[]
+    emits('getback',userresume)
 }
 </script>
 

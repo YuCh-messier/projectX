@@ -4,23 +4,7 @@ var props=defineProps(['userinfo'])
 var emits=defineEmits(['getback'])
 var {userinfo}=toRefs(props)
 var submitUserInfo=function(){
-    console.log(userinfo)
-    emits('getback')
-}
-</script>
-
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  components:{
-   
-  },
-  props:[]
+    emits('getback',userinfo)
 }
 </script>
 

@@ -32,7 +32,9 @@ export default defineConfig({
         recruits: resolve(__dirname, 'src/pages/recruits.html'),
         speRecruit: resolve(__dirname, 'src/pages/speRecruit.html'),
         recommend: resolve(__dirname, 'src/pages/recommend.html'),
-        userSetting: resolve(__dirname, 'src/pages/userSetting.html')
+        userSetting: resolve(__dirname, 'src/pages/userSetting.html'),
+        mySpeRecruit: resolve(__dirname, 'src/pages/mySpeRecruit.html'),
+        myRecruits: resolve(__dirname, 'src/pages/myRecruits.html')
       }
     }
   }

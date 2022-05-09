@@ -10,11 +10,8 @@ function checkAccount(hAV){
     $.post(serverHost+'check/checkUser',
     {telepone:'13272732651',token:'DSHOUCS'},
     (data,statu)=>{
-        if(true){
-            hAV(data)
-        }
+        hAV(data)
     })
-    return {statu:false,userInfo:null}
 }
 
 //基本的请求数据
@@ -23,7 +20,6 @@ function getDatas(hAV,route,dataO={}){
         serverHost+route,
         dataO,
         (data,statu)=>{
-            console.log(statu)
             if(statu=='success'){
                 hAV(data)
             }
@@ -39,7 +35,6 @@ function getDatasP(hAV,route,dataO={}){
         serverHost+route,
         dataO,
         (data,statu)=>{
-            console.log(statu)
             if(statu=='success'){
                 hAV(data)
             }

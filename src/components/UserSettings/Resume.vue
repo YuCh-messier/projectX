@@ -4,25 +4,14 @@ import ResumeSon from './ResumeSon.vue';
 import UserResumeSon from '../Forms/UserResumeSon.vue';
 import UserResume from '../Forms/UserResume.vue';
 var props=defineProps(['userresume'])
+var emits=defineEmits(['sendresume'])
 var {userresume}=toRefs(props)
 var statu=ref(0)
-function changeStatu(){
+function changeStatu(e){
+  if(statu.value==1){
+    emits('sendresume',e)
+  }
   statu.value=(statu.value==0)?1:0
-}
-</script>
-
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  components:{
-   
-  },
-  props:[]
 }
 </script>
 
