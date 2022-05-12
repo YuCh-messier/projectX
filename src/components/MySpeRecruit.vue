@@ -18,6 +18,13 @@ var userResume=ref({})
 var recruitStatu=ref([])
 var mapInfo=ref({address:''})
 
+checkAccount((e)=>{
+    if(!e.statu){
+        alert('请先登录！')
+        window.location=host+'pages/recruits.html'
+    }
+})
+
 getDatas((e)=>{
   headerInfo.value=e.headerInfo
   speRecruitInfo.value=e.speRecruitInfo

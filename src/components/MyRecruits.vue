@@ -1,18 +1,18 @@
 <script setup>
 import MyRecruitList from './MyRecruits/MyRecruitList.vue';
 import { ref } from 'vue';
-import { getDatas,checkAccount} from '../scripts/publicFunctions'
+import { getDatas,checkAccount,host} from '../scripts/publicFunctions'
 
 checkAccount((e)=>{
     if(!e.statu){
         alert('请先登录！')
-        window.history.back()
+        window.location=host+'pages/recruits.html'
     }
 })
 
 var {willu}=defineProps(['willu'])
 var contents=ref([])
-getDatas((e)=>{contents.value=e},'myRecruits/allMyRecruits',{telephone:'13272732651',token:'NNKOYCA'})
+getDatas((e)=>{contents.value=e},'myRecruits/allMyRecruits')
 </script>
 
 <template>

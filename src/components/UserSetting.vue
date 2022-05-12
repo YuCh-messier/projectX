@@ -7,20 +7,18 @@ import MessageList from './Messages/MessageList.vue';
 import MyRecruits from './MyRecruits.vue';
 import CollectList from './Collects/CollectList.vue'
 import { toRefs,ref } from 'vue';
-import { getDatas,userKey } from '../scripts/publicFunctions';
-import { getDatasP,checkAccount } from '../scripts/publicFunctions';
+import { getDatas,getDatasP,checkAccount,standardInfo,host } from '../scripts/publicFunctions';
 
 var userInfo=ref([])
 var userResume=ref({})
 var userMessages=ref([])
 var collects=ref([])
 var currentPath=ref('个人资料')
-var standardInfo=ref({})
 
 checkAccount((e)=>{
     if(!e.statu){
         alert('请先登录！')
-        window.history.back()
+        window.location=host+'pages/recruits.html'
     }
 })
 getDatas((e)=>{
@@ -28,16 +26,29 @@ getDatas((e)=>{
   userResume.value=e.userResume
   userMessages.value=e.userMessages
   collects.value=e.collects
-  standardInfo.value=e.standardInfo
-},'user/getUserInfo',
-userKey)
+},'user/getUserInfo')
 
 function sendInfo(e){
-  getDatasP((e)=>{console.log(e)},'user/setUserInfo',e)
+  checkAccount((e2)=>{
+    if(e2.statu){
+      getDatasP((e)=>{console.log(e)},'user/setUserInfo',e)
+    }
+    else{
+      alert('请登录先')
+    }
+  })
+  
 }
 
 function sendResume(e){
-  getDatasP((e)=>{console.log(e)},'user/setUserResume',e)
+  checkAccount((e2)=>{
+    if(e2.statu){
+      getDatasP((e)=>{console.log(e)},'user/setUserResume',e)
+    }
+    else{
+      alert('请登录先')
+    }
+  }) 
 }
 
 function changeChoice(e){

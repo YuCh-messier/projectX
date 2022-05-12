@@ -2,6 +2,7 @@
 import Son1 from './HeaderSon1.vue'
 import Son2 from './HeaderSon2.vue'
 import { host } from '../../scripts/publicFunctions';
+import { getDatasP,setStandardInfo } from '../../scripts/publicFunctions';
 
 var props=defineProps(['user'])
 var headerParts=[
@@ -13,6 +14,10 @@ var headerParts=[
 function goto(url){
     window.location=host+url
   }
+
+function login(){
+  getDatasP((e)=>{console.log(e);setStandardInfo()},'user/login')
+}
 </script>
 
 <template>
@@ -33,7 +38,7 @@ function goto(url){
 
     <div id="headImg" v-if="user.statu"><img @click="goto('pages/userSetting.html')" class="rounded-[100%] bg-gray-200 w-10 h-10 headerHoverPattern" :src="user.headImg" alt=""></div>
     <div class="col-start-11 col-end-13" v-if="user.statu">欢迎使用！{{user.name}}</div>
-    <div v-else class="flex"><el-button class="buttonStandard">登录</el-button><el-button class="buttonStandard" :icon="Search">注册</el-button></div>
+    <div v-else class="flex"><el-button class="buttonStandard" @click="login">登录</el-button><el-button class="buttonStandard" :icon="Search">注册</el-button></div>
   </div>
 </div>
 </template>

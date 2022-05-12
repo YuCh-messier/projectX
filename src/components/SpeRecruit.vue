@@ -4,10 +4,7 @@ import SpeRecruitContent from './RecruitContents/SpeRecruitContent.vue';
 import CompanyContent from './CompanyContents/CompanyContent.vue';
 import Maps from './Maps/Map.vue'
 import { ref } from 'vue';
-import { checkAccount, getDatas} from '../scripts/publicFunctions'
-import { getQueryVariable } from '../scripts/publicFunctions';
-import { getDatasP } from '../scripts/publicFunctions';
-import { userKey } from '../scripts/publicFunctions'
+import { checkAccount, getDatas,getDatasP,getQueryVariable } from '../scripts/publicFunctions'
 
 var affairId=getQueryVariable('affairId')
 var type=getQueryVariable('type')
@@ -30,17 +27,17 @@ getDatas((e)=>{
 
 checkAccount((e)=>{
   if(e.statu){
-    getDatasP((e2)=>{ifCollect.value=(e2=='success')?true:false},'collect/checkCollect',{affairId:affairId,...userKey,type:'recruit'})
+    getDatasP((e2)=>{ifCollect.value=(e2=='success')?true:false},'collect/checkCollect',{affairId:affairId,type:'recruit'})
   }
   else{
-    alert('请登录先')
+    
   }
 })
 
 function setRecruit(){
   checkAccount((e)=>{
   if(e.statu){
-    getDatasP((e2)=>{alert(e2)},'myrecruits/setRecruit',{affairId:affairId,...userKey,type:'recruit'})
+    getDatasP((e2)=>{alert(e2)},'myrecruits/setRecruit',{affairId:affairId,type:'recruit'})
   }
   else{
     alert('请登录先')
@@ -52,7 +49,7 @@ function setCollect(){
   checkAccount((e)=>{
     if(e.statu){
       ifCollect.value=true
-      getDatasP((e2)=>{alert(e2)},'collect/setCollect',{affairId:affairId,...userKey,type:'recruit'})
+      getDatasP((e2)=>{alert(e2)},'collect/setCollect',{affairId:affairId,type:'recruit'})
     }
     else{
       alert('请登录先')
