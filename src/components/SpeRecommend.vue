@@ -5,9 +5,6 @@ import CompanyContent from './CompanyContents/CompanyContent.vue';
 import Maps from './Maps/Map.vue'
 import { ref } from 'vue';
 import { checkAccount, getDatas,checkSpecialAccount,getQueryVariable,getDatasP} from '../scripts/publicFunctions'
-import { getQueryVariable } from '../scripts/publicFunctions';
-import { getDatasP } from '../scripts/publicFunctions';
-
 
 var affairId=getQueryVariable('affairId')
 var type=getQueryVariable('type')
@@ -65,11 +62,12 @@ function setCollect(){
 
 <template>
 <div class="container mx-auto">
-    <div class="mb-6"><RecruitHeader @setcollect="setCollect" @setrecruit="setRecruit" :ifcollect="!ifCollect" :headerinfo="headerInfo"></RecruitHeader></div>
+    <div class="lg:mb-6"><RecruitHeader @setcollect="setCollect" @setrecruit="setRecruit" :ifcollect="!ifCollect" :headerinfo="headerInfo"></RecruitHeader></div>
     <div class="flex gap-x-5 xl:px-32">
-        <div class="w-3/5 mb-10"><SpeRecruitContent :sperecruitinfo="speRecruitInfo"></SpeRecruitContent></div>
-        <div class="w-2/5"><CompanyContent :companyinfo="companyInfo"></CompanyContent></div>
+        <div class="w-full mb-10 lg:w-3/5"><SpeRecruitContent :sperecruitinfo="speRecruitInfo"></SpeRecruitContent></div>
+        <div class="w-2/5 hidden lg:block"><CompanyContent :companyinfo="companyInfo"></CompanyContent></div>
     </div>
+    <div class="w-full block lg:hidden"><CompanyContent :companyinfo="companyInfo"></CompanyContent></div>
     <div class="w-fit mx-auto mt-6 font-bold text-xl">实习地点</div>
     <div class="w-fit mx-auto textSm mt-2">{{mapInfo.address}}</div>
     <div class="xl:px-32"><Maps :mapinfo="mapInfo"></Maps></div>

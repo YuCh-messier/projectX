@@ -6,8 +6,8 @@ var {contents}=toRefs(props)
 </script>
 
 <template>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 px-5 sm:px-0">
-        <RecommendContent class="my-5" v-for="content in contents" :key="content.id" :content="content"></RecommendContent>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 lg:px-5">
+        <RecommendContent class="border-b border-gray-300 shadow-lg lg:my-5 lg:border-0 lg:shadow-none" v-for="content in contents" :key="content.id" :content="content"></RecommendContent>
     </div>
 </template>
 

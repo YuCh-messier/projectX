@@ -10,7 +10,7 @@ var {headerinfo}=toRefs(props)
 </script>
 
 <template>
-<div class="flex justify-around p-6">
+<div class="flex justify-around p-6 flex-col lg:flex-row">
     <div class="text-xl flex gap-y-4 flex-col">
         <div class="font-bold">{{headerinfo.title}}</div>
         <div class="textSm">{{headerinfo.address}}</div>
@@ -20,12 +20,12 @@ var {headerinfo}=toRefs(props)
             <button class="buttonBigLight" @click="emits('setrecruit')">投递</button>
         </div>
     </div>
-    <div class="flex items-center">
+    <div class="flex items-center my-4 lg:my-0">
         <div class="text-xl">{{headerinfo.workDays}}/周</div>
     </div>
     <div class="flex items-center">
         <div class="text-orange-500 text-xl">{{headerinfo.salary}}/天</div>
-        <div class="tapsStandard h-fit ml-4">{{headerinfo.taps}}</div>
+        <div class="tapsStandard h-fit ml-4 hidden lg:block">{{headerinfo.taps}}</div>
     </div>
 </div>
 </template>

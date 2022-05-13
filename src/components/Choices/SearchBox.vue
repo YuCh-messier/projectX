@@ -7,7 +7,7 @@ var emits=defineEmits(['searchfunction'])
 
 <template>
     <div>
-    <el-input v-model="keyWord" class="w-2/3 m-2" placeholder="输入关键词">
+    <el-input v-model="keyWord" class="w-2/3 mx-2 lg:m-2" placeholder="输入关键词">
         <template #suffix>
             <el-icon class="el-input__icon"><Search /></el-icon>
         </template>

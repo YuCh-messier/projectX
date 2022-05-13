@@ -21,7 +21,6 @@ function goto(href){
 <style src="../../assets/public.css"></style>
 <style scoped>
     #ppt{
-        display: grid;
         grid-template-areas:    'a a b'
                                 'a a c'
                                 'a a d';

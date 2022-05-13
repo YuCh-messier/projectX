@@ -14,6 +14,7 @@ var userResume=ref({})
 var userMessages=ref([])
 var collects=ref([])
 var currentPath=ref('个人资料')
+var currentPathM=ref('资料')
 
 checkAccount((e)=>{
     if(!e.statu){
@@ -54,10 +55,15 @@ function sendResume(e){
 function changeChoice(e){
     currentPath.value=e
   }
+
+function changeChoiceM(e){
+    currentPathM.value=e
+  }
 </script>
 
 <template>
     <div class="container mx-auto xl:px-24">
+      <div class="hidden lg:block">
         <UserHeader :standardinfo="standardInfo"></UserHeader>
         <Switcher @changechoice="changeChoice" currentchoice="个人资料" :choices="['个人资料','简历上传','上传附件','我的收藏','我的投递','我的消息']"></Switcher>
         <PersonalInfo v-if="currentPath=='个人资料'" :userinfo="userInfo" @sendinfo="sendInfo"></PersonalInfo>
@@ -65,6 +71,16 @@ function changeChoice(e){
         <MessageList v-if="currentPath=='我的消息'" :messages="userMessages"></MessageList>
         <MyRecruits v-if="currentPath=='我的投递'" :willu="0"></MyRecruits>
         <CollectList v-if="currentPath=='我的收藏'" :collects="collects"></CollectList>
+      </div>
+      <div class="block lg:hidden">
+        <UserHeader :standardinfo="standardInfo"></UserHeader>
+        <Switcher @changechoice="changeChoiceM" currentchoice="资料" :choices="['资料','简历','附件','收藏','我的投递','消息']"></Switcher>
+        <PersonalInfo v-if="currentPathM=='资料'" :userinfo="userInfo" @sendinfo="sendInfo"></PersonalInfo>
+        <Resume v-if="currentPathM=='简历'" :userresume="userResume" @sendresume="sendResume"></Resume>
+        <MessageList v-if="currentPathM=='消息'" :messages="userMessages"></MessageList>
+        <MyRecruits v-if="currentPathM=='我的投递'" :willu="0"></MyRecruits>
+        <CollectList v-if="currentPathM=='收藏'" :collects="collects"></CollectList>
+      </div>
     </div>
 </template>
 

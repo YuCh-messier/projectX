@@ -7,7 +7,7 @@ var {contents}=toRefs(props)
 
 <template>
     <div>
-        <RecruitContent class="my-5" v-for="content in contents" :key="content.id" :content="content"></RecruitContent>
+        <RecruitContent class="border-b border-gray-300  shadow-lg lg:my-5 lg:border-0 lg:shadow-none" v-for="content in contents" :key="content.id" :content="content"></RecruitContent>
     </div>
 </template>
 
