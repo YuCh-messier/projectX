@@ -48,8 +48,8 @@ function deleteSon(i){
             <div class="text-md font-semibold inline-block mr-5">经历{{index+1}}</div><button class="buttonStandardLight inline-block" @click="deleteSon(index)">删除</button>
             <div class="my-3 flex" v-for="content,title in resume" :key="title">
                 <div class="text-gray-500 w-1/5">{{title}}</div>
-                <textarea class="bg-inherit border hover:border-amber-400 w-1/3" v-model="resumeson[index][title]" v-if="title=='经历简介'"></textarea>
-                <input class="bg-inherit border hover:border-amber-400 w-1/3" v-model="resumeson[index][title]" v-else/>
+                <textarea class="bg-inherit border hover:border-amber-400 lg:w-1/3" v-model="resumeson[index][title]" v-if="title=='经历简介'"></textarea>
+                <input class="bg-inherit border hover:border-amber-400 w-full lg:w-1/3" v-model="resumeson[index][title]" v-else/>
             </div>
         </div>
     </div>

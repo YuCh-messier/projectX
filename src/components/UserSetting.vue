@@ -74,11 +74,11 @@ function changeChoiceM(e){
       </div>
       <div class="block lg:hidden">
         <UserHeader :standardinfo="standardInfo"></UserHeader>
-        <Switcher @changechoice="changeChoiceM" currentchoice="资料" :choices="['资料','简历','附件','收藏','我的投递','消息']"></Switcher>
+        <Switcher @changechoice="changeChoiceM" currentchoice="资料" :choices="['资料','简历','附件','收藏','投递','消息']"></Switcher>
         <PersonalInfo v-if="currentPathM=='资料'" :userinfo="userInfo" @sendinfo="sendInfo"></PersonalInfo>
         <Resume v-if="currentPathM=='简历'" :userresume="userResume" @sendresume="sendResume"></Resume>
         <MessageList v-if="currentPathM=='消息'" :messages="userMessages"></MessageList>
-        <MyRecruits v-if="currentPathM=='我的投递'" :willu="0"></MyRecruits>
+        <MyRecruits v-if="currentPathM=='投递'" :willu="0"></MyRecruits>
         <CollectList v-if="currentPathM=='收藏'" :collects="collects"></CollectList>
       </div>
     </div>
