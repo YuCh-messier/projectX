@@ -49,6 +49,13 @@ function deleteSon(i){
             <div class="my-3 flex" v-for="content,title in resume" :key="title">
                 <div class="text-gray-500 w-1/5">{{title}}</div>
                 <textarea class="bg-inherit border hover:border-amber-400 lg:w-1/3" v-model="resumeson[index][title]" v-if="title=='经历简介'"></textarea>
+                <div v-else-if="title=='学位'" class="bg-inherit">
+                    <el-radio v-model="resumeson[index][title]" label="大专" size="large">大专</el-radio>
+                    <el-radio v-model="resumeson[index][title]" label="本科" size="large">本科</el-radio>
+                    <el-radio v-model="resumeson[index][title]" label="硕士" size="large">硕士</el-radio>
+                    <el-radio v-model="resumeson[index][title]" label="博士" size="large">博士</el-radio>
+                    <el-radio v-model="resumeson[index][title]" label="其他" size="large">其他</el-radio>
+                </div>
                 <input class="bg-inherit border hover:border-amber-400 w-full lg:w-1/3" v-model="resumeson[index][title]" v-else/>
             </div>
         </div>

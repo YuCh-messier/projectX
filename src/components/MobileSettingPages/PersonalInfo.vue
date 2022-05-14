@@ -1,6 +1,6 @@
 <script setup>
 import { toRefs,ref } from 'vue';
-import UserInfo from '../Forms/UserInfo.vue';
+import UserInfo from './UserInfo.vue';
 var props=defineProps(['userinfo'])
 var emits=defineEmits(['sendinfo'])
 var {userinfo}=toRefs(props)
@@ -17,7 +17,7 @@ function changeStatu(e){
     <div v-if="statu==0">
         <div class="flex justify-between items-center my-5 px-10">
             <div class="text-lg font-semibold inline-block">基本信息</div>
-            <button class="h-fit buttonStandardDark" @click="changeStatu">修改</button>
+            <button class="h-fit buttonStandardDark z-20" @click="changeStatu">修改</button>
         </div>
         <div class="flex py-4 px-10 rounded-sm" :class="{'bg-white':(index%2==0)}" v-for="info,index in userinfo" :key="info.title">
             <div class="w-1/3 text-gray-500">{{info.title}}</div>

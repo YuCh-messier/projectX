@@ -19,7 +19,7 @@ function goto(url){
   }
 
 function login(){
-  getDatasP((e)=>{console.log(e);setStandardInfo()},'user/login')
+  getDatasP((e)=>{console.log(e);setStandardInfo();window.location.reload()},'user/login')
 }
 
 function changeCol(){

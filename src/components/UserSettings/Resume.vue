@@ -23,7 +23,15 @@ function changeStatu(e){
         </div>
         <div class="py-4 px-10 rounded-sm">
             <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">个人简介</div>
-            <div class="rounded p-4 mt-2 bg-white w-full">{{userresume.overView}}</div>
+            <div class="rounded p-4 mt-2 bg-white w-full whitespace-pre-line">{{userresume.overView}}</div>
+        </div>
+        <div class="py-4 px-10 rounded-sm">
+            <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">获奖经历</div>
+            <div class="rounded p-4 mt-2 bg-white w-full whitespace-pre-line">{{userresume.awards}}</div>
+        </div>
+        <div class="py-4 px-10 rounded-sm">
+            <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">专业技能</div>
+            <div class="rounded p-4 mt-2 bg-white w-full whitespace-pre-line">{{userresume.skills}}</div>
         </div>
         <div class="py-4 px-10 rounded-sm">
           <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">教育经历</div>

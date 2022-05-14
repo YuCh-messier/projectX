@@ -20,6 +20,7 @@ getDatas((e)=>{
     speRecruitInfo.value=e.speRecruitInfo
     companyInfo.value=e.companyInfo
     mapInfo.value=e.mapInfo
+    sessionStorage.setItem('mapinfo',JSON.stringify(e.mapInfo))
     },
     'recruits/speRecruit',
     {affairId:affairId,type:type}
@@ -68,7 +69,7 @@ function setCollect(){
     <div class="w-full block lg:hidden"><CompanyContent :companyinfo="companyInfo"></CompanyContent></div>
     <div class="w-fit mx-auto mt-6 font-bold text-xl">实习地点</div>
     <div class="w-fit mx-auto textSm mt-2">{{mapInfo.address}}</div>
-    <div class="xl:px-32"><Maps :mapinfo="mapInfo"></Maps></div>
+    <div class="xl:px-32 mx-auto lg:w-4/5"><Maps></Maps></div>
 </div>
 </template>
 

@@ -6,6 +6,12 @@ import { host } from '../../scripts/publicFunctions';
 function goto(url){
   window.location=host+url
 }
+
+function logout(){
+    document.cookie = "telephone=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.reload()
+}
 </script>
 
 <template>
@@ -39,7 +45,7 @@ function goto(url){
            <div>意见反馈</div><ArrowRight  class="ml-1 w-4 h-fit"/>
         </div>
     </div>
-    <button class="w-full bg-amber-400 py-4 mt-6">退出登录</button>
+    <button class="w-full bg-amber-400 py-4 mt-6" @click="logout()">退出登录</button>
 </div>
 </template>
 

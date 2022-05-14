@@ -10,7 +10,7 @@ var {resumeson}=toRefs(props)
             <div class="text-md font-semibold">经历{{index+1}}</div>
             <div class="my-3 flex" v-for="content,title in resume" :key="title">
                 <div class="text-gray-500 w-1/5">{{title}}</div>
-                <div>{{content}}</div>
+                <div class="whitespace-pre-line">{{content}}</div>
             </div>
         </div>
     </div>

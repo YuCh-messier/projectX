@@ -1,8 +1,9 @@
 <script setup>
-import { toRefs } from 'vue';
-import { host } from '../../scripts/publicFunctions';
-var props=defineProps(['ppts'])
-var {ppts}=toRefs(props)
+import { ref } from 'vue';
+import { host,getDatas } from '../../scripts/publicFunctions';
+
+var ppts=ref([{graph:''},{graph:''},{graph:''},{graph:''}])
+getDatas((e)=>{ppts.value=e},'ppts/setPpts')
 
 function goto(href){
     window.location=href
@@ -11,9 +12,9 @@ function goto(href){
 
 <template>
     <div>
-    <el-carousel :interval="5000" arrow="always" height="150px">
-        <el-carousel-item v-for="item in 4" :key="item">
-
+    <el-carousel :interval="5000" arrow="always" height="200px">
+        <el-carousel-item v-for="item in ppts" :key="item">
+            <div class="w-full h-full" :style="'background-position:center;background-size:cover;background-image:url('+item.graph+');'"></div>
         </el-carousel-item>
     </el-carousel>
     </div>

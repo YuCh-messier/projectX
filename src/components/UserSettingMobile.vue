@@ -12,6 +12,7 @@ var userInfo=ref([])
 var userResume=ref({})
 var userMessages=ref([])
 var collects=ref([])
+var userAno=ref({})
 var currentPath=ref('个人资料')
 var currentPathM=ref('首页')
 
@@ -26,6 +27,8 @@ getDatas((e)=>{
   userResume.value=e.userResume
   userMessages.value=e.userMessages
   collects.value=e.collects
+  userAno.value=e.userAno
+  sessionStorage.setItem('userAno',JSON.stringify(userAno.value))
 },'user/getUserInfo')
 
 function sendInfo(e){
@@ -56,7 +59,7 @@ function changeChoiceM(e){
         <div class="absolute w-full"><Switcher class="-translate-y-16 relative" @changechoice="changeChoiceM" currentchoice="首页" :choices="['首页','资料','附件','投递','消息']"></Switcher></div>
         <div class="mt-16">
         <PersonalInfo v-if="currentPathM=='资料'" :userinfo="userInfo" @sendinfo="sendInfo"></PersonalInfo>
-        <UserHome v-if="currentPathM=='首页'"></UserHome>
+        <UserHome v-if="currentPathM=='首页'" :userano="userAno"></UserHome>
         <MessageList v-if="currentPathM=='消息'" :messages="userMessages"></MessageList>
         <MyRecruits v-if="currentPathM=='投递'" :willu="0"></MyRecruits>
         </div>

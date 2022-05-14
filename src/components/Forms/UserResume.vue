@@ -54,6 +54,14 @@ function checkBlank(obj){
             <textarea v-model="userresume.overView" class="rounded p-4 mt-2 bg-white w-full"></textarea>
         </div>
         <div class="py-4 px-10 rounded-sm">
+            <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">获奖经历</div>
+            <textarea v-model="userresume.awards" class="rounded p-4 mt-2 bg-white w-full"></textarea>
+        </div>
+        <div class="py-4 px-10 rounded-sm">
+            <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">专业技能</div>
+            <textarea v-model="userresume.skills" class="rounded p-4 mt-2 bg-white w-full"></textarea>
+        </div>
+        <div class="py-4 px-10 rounded-sm">
           <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">教育经历</div>
           <UserResumeSon class="p-4 my-2" :type="0" :resumeson1="userresume.educateView" v-model="userresume.educateView"></UserResumeSon>
         </div>

@@ -18,7 +18,7 @@ var {message}=toRefs(props)
         <div class="m-3">
             <el-collapse v-model="activeNames" @change="handleChange">
             <el-collapse-item :title="message.title">
-                <div class="text-base">{{message.content}}</div>
+                <div class="text-base whitespace-pre-line">{{message.content}}</div>
             </el-collapse-item>
             </el-collapse>
         </div>
