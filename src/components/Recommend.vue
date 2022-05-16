@@ -14,7 +14,7 @@ function searchFunction(keyWord){
         getDatas((e)=>{contents.value=e},'recommends/allRecommends')
     }
     else{
-    getDatas((e)=>{contents.value=e},'recruits/searchRecommends',{keyWord:keyWord,type:'recommend'})
+    getDatas((e)=>{contents.value=e},'recommends/searchRecommends',{keyWord:keyWord,type:'recommend'})
     console.log(keyWord)
     }
 }

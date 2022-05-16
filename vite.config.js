@@ -40,9 +40,12 @@ export default defineConfig({
         mySpeRecruit: resolve(__dirname, 'src/pages/mySpeRecruit.html'),
         myRecruits: resolve(__dirname, 'src/pages/myRecruits.html'),
         speRecommend: resolve(__dirname,  'src/pages/speRecommend.html'),
-        singleForm: resolve(__dirname,  'src/pages/singleForm.html'),
         collects: resolve(__dirname,  'src/pages/mobileSettingPages/collects.html'),
         resume: resolve(__dirname,  'src/pages/mobileSettingPages/resume.html'),
+        singleForm: resolve(__dirname,  'src/pages/singleForm.html'),
+        singleForm2: resolve(__dirname,  'src/pages/singleForm2.html'),
+        singleForm3: resolve(__dirname,  'src/pages/singleForm3.html'),
+        singleForm4: resolve(__dirname,  'src/pages/singleForm4.html'),
       }
     }
   }

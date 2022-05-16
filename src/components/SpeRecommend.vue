@@ -24,7 +24,7 @@ getDatas((e)=>{
     affairKey.value=e.affairKey
     sessionStorage.setItem('mapinfo',JSON.stringify(e.mapInfo))
     },
-    'recruits/speRecommend',
+    'recommends/speRecommend',
     {affairId:affairId,type:type}
     )
 
@@ -40,7 +40,7 @@ checkAccount((e)=>{
 function setRecruit(){
   checkSpecialAccount((e)=>{
   if(e.statu){
-    getDatasP((e2)=>{alert(e2)},'myrecruits/setRecruit',{affairId:affairId,type:'recommend'})
+    getDatasP((e2)=>{alert(e2)},'myRecruits/setRecruit',{affairId:affairId,type:'recommend'})
   }
   else{
     alert('请登录先')

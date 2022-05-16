@@ -38,7 +38,7 @@ checkAccount((e)=>{
 function setRecruit(){
   checkAccount((e)=>{
   if(e.statu){
-    getDatasP((e2)=>{alert(e2)},'myrecruits/setRecruit',{affairId:affairId,type:'recruit'})
+    getDatasP((e2)=>{alert(e2)},'myRecruits/setRecruit',{affairId:affairId,type:'recruit'})
   }
   else{
     alert('请登录先')

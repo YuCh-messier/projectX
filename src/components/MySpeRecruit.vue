@@ -3,7 +3,6 @@ import MyRecruitHeader from './MyRecruits/MyRecruitHeader.vue';
 import SpeRecruitContent from './RecruitContents/SpeRecruitContent.vue';
 import MySendedInfo from './MyRecruits/MySendedInfo.vue'
 import Maps from './Maps/Map.vue'
-import MysendedInfo from './MyRecruits/MysendedInfo.vue'
 import MySendedResume from './MyRecruits/MySendedResume.vue'
 import { ref } from 'vue';
 import { getDatas,getQueryVariable,checkAccount} from '../scripts/publicFunctions'
@@ -52,7 +51,7 @@ function myStatu(e){
     <div class="mb-6"><MyRecruitHeader :headerinfo="headerInfo"></MyRecruitHeader></div>
     <div class="flex gap-x-5 flex-col lg:flex-row xl:px-32">
         <div class="w-full mb-10 lg:w-3/5"><SpeRecruitContent :sperecruitinfo="speRecruitInfo"></SpeRecruitContent></div>
-        <div class="w-full lg:w-2/5"><MysendedInfo :userinfo="userInfo"></MysendedInfo></div>
+        <div class="w-full lg:w-2/5"><MySendedInfo :userinfo="userInfo"></MySendedInfo></div>
     </div>
     <div class="w-fit mx-auto mt-6 font-bold text-xl">实习地点</div>
     <div class="w-fit mx-auto textSm mt-2">{{mapInfo.address}}</div>
