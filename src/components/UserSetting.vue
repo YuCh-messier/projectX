@@ -6,6 +6,7 @@ import Resume from './UserSettings/Resume.vue';
 import MessageList from './Messages/MessageList.vue';
 import MyRecruits from './MyRecruits.vue';
 import CollectList from './Collects/CollectList.vue'
+import Files from './Forms/Files.vue';
 import { toRefs,ref } from 'vue';
 import { getDatas,getDatasP,checkAccount,standardInfo,host } from '../scripts/publicFunctions';
 
@@ -71,16 +72,17 @@ function logout(){
 
 <template>
     <div class="container mx-auto xl:px-24">
-      <div class="hidden lg:block">
+      <div class="hidden md:block">
         <UserHeader :standardinfo="standardInfo"></UserHeader>
         <Switcher @changechoice="changeChoice" currentchoice="个人资料" :choices="['个人资料','简历上传','上传附件','我的收藏','我的投递','我的消息']"></Switcher>
         <PersonalInfo v-if="currentPath=='个人资料'" :userano="userAno" :userinfo="userInfo" @sendinfo="sendInfo"></PersonalInfo>
         <Resume v-if="currentPath=='简历上传'" :userresume="userResume" @sendresume="sendResume"></Resume>
         <MessageList v-if="currentPath=='我的消息'" :messages="userMessages"></MessageList>
         <MyRecruits v-if="currentPath=='我的投递'" :willu="0"></MyRecruits>
+        <Files v-if="currentPath=='上传附件'"></Files>
         <CollectList v-if="currentPath=='我的收藏'" :collects="collects"></CollectList>
       </div>
-      <div class="block lg:hidden">
+      <div class="block md:hidden">
         <UserHeader :standardinfo="standardInfo"></UserHeader>
         <Switcher @changechoice="changeChoiceM" currentchoice="资料" :choices="['资料','简历','附件','收藏','投递','消息']"></Switcher>
         <PersonalInfo v-if="currentPathM=='资料'" :userano="userAno" :userinfo="userInfo" @sendinfo="sendInfo"></PersonalInfo>

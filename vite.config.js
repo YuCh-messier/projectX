@@ -46,6 +46,8 @@ export default defineConfig({
         singleForm2: resolve(__dirname,  'src/pages/singleForm2.html'),
         singleForm3: resolve(__dirname,  'src/pages/singleForm3.html'),
         singleForm4: resolve(__dirname,  'src/pages/singleForm4.html'),
+        register: resolve(__dirname,  'src/pages/register.html'),
+        login: resolve(__dirname,  'src/pages/login.html'),
       }
     }
   }

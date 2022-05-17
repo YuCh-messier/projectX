@@ -5,6 +5,7 @@ import PersonalInfo from './MobileSettingPages/PersonalInfo.vue';
 import MessageList from './Messages/MessageList.vue';
 import MyRecruits from './MyRecruits.vue';
 import UserHome from './MobileSettingPages/UserHome.vue';
+import Files from './Forms/Files.vue';
 import { toRefs,ref } from 'vue';
 import { getDatas,getDatasP,checkAccount,standardInfo,host } from '../scripts/publicFunctions';
 
@@ -60,6 +61,7 @@ function changeChoiceM(e){
         <div class="mt-16">
         <PersonalInfo v-if="currentPathM=='资料'" :userinfo="userInfo" @sendinfo="sendInfo"></PersonalInfo>
         <UserHome v-if="currentPathM=='首页'" :userano="userAno"></UserHome>
+        <Files v-if="currentPathM=='附件'"></Files>
         <MessageList v-if="currentPathM=='消息'" :messages="userMessages"></MessageList>
         <MyRecruits v-if="currentPathM=='投递'" :willu="0"></MyRecruits>
         </div>

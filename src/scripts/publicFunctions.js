@@ -1,9 +1,9 @@
 import $, { get } from 'jquery'
 
 //前端host
-var host='http://124.223.155.169/'
+var host='http://127.0.0.1:3000/'
 //后端host
-var serverHost='http://124.223.155.169:3003/'
+var serverHost='http://127.0.0.1:3001/'
 
 //初始化标准信息
 var userKey=checkCookie()
