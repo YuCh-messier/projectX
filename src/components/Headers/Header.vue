@@ -18,9 +18,6 @@ function goto(url){
     window.location=host+url
   }
 
-function login(){
-  getDatasP((e)=>{console.log(e);setStandardInfo();window.location.reload()},'user/login')
-}
 
 function changeCol(){
   showCol.value=!showCol.value
@@ -49,7 +46,7 @@ var ifCol=ref('text-gray-500')
 
     <div id="headImg" v-if="user.statu"><img @click="goto('pages/userSetting.html')" class="rounded-[100%] bg-gray-200 w-10 h-10 headerHoverPattern" :src="user.headImg" alt=""></div>
     <div class="col-start-11 col-end-13" v-if="user.statu">欢迎使用！{{user.name}}</div>
-    <div v-else class="flex"><el-button class="buttonStandard" @click="login">登录</el-button><el-button class="buttonStandard" :icon="Search">注册</el-button></div>
+    <div v-else class="flex"><el-button class="buttonStandard" @click="goto('pages/login.html')">登录</el-button><el-button class="buttonStandard" @click="goto('pages/register.html')" :icon="Search">注册</el-button></div>
   </div>
 
   <div class="block lg:hidden">
@@ -59,7 +56,7 @@ var ifCol=ref('text-gray-500')
       <div class="flex items-center">
         <div id="headImg" class="mr-2" v-if="user.statu"><img @click="goto('pages/userSetting.html')" class="rounded-[100%] bg-gray-200 w-10 h-10 headerHoverPattern" :src="user.headImg" alt=""></div>
         <div class="col-start-11 col-end-13 textSm" v-if="user.statu">Welcome , {{user.name}}</div>
-        <div v-else class="flex"><el-button class="buttonStandard" @click="login">登录</el-button><el-button class="buttonStandard" :icon="Search">注册</el-button></div>
+        <div v-else class="flex"><el-button class="buttonStandard" @click="goto('pages/login.html')">登录</el-button><el-button class="buttonStandard" @click="goto('pages/register.html')" :icon="Search">注册</el-button></div>
       </div>
     </div>
   </div>

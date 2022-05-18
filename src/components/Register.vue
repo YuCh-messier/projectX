@@ -28,6 +28,8 @@
 
 	import qs from 'qs'
     import axios from 'axios'
+	import { host,serverHost,getDatasP,setStandardInfo } from '../scripts/publicFunctions';
+	import $ from 'jquery'
 
 	export default {
 		name: "Login",
@@ -35,6 +37,8 @@
 			return {
                 ifsend:true,
                 interval:60,
+				iftrue:false,
+				telephoneToken:'',
 				loginForm: {
 					username: '',
 					password: '',
@@ -61,15 +65,38 @@
 		},
 		methods: {
 			submitForm(formName) {
+				if(!this.iftrue){
+					return
+				}
 				this.$refs[formName].validate((valid) => {
 					if (valid) {
-						// axios.post('/login?'+ qs.stringify(this.loginForm)).then(res => {
-						// 	console.log(res)
-						// 	const jwt = res.headers['authorization']
-						// 	this.$store.commit('SET_TOKEN', jwt)
-						// 	this.$router.push("/index")
-						// })
-                        console.log(this.loginForm)
+
+						$.ajax({
+							url: 'http://it120club.space/check/checkTelephone',
+							type: "post",
+							data:{telephoneToken:this.telephoneToken,telephone:this.loginForm.telephone,code:this.loginForm.code},
+							crossDomain:true,
+							xhrFields: {
+								withCredentials: true //允许跨域带Cookie
+							},
+							success:(data,statu)=>{
+								if(statu=='success'){
+									if(data.statu){
+										getDatasP((e)=>{
+											alert('注册成功')
+											// getDatasP((e)=>{console.log(e);setStandardInfo();window.location=host+'pages/recruits.html'},'user/login')
+										},'user/register',this.loginForm)
+									}
+									else{
+										alert('验证码有误')
+									}
+								}
+								else{
+									alert('出错了')
+								}
+							}
+						});
+
 					} else {
 						console.log('error submit!!');
 						return false;
@@ -80,6 +107,7 @@
 				this.$refs[formName].resetFields();
 			},
 			getCaptcha() {
+				if(this.loginForm.telephone!=''){
                 this.ifsend=false
                 var timerun=setInterval(()=>{
                     this.interval-=1;
@@ -90,13 +118,25 @@
                     }
                 },1000)
                 
-				// axios.get('/captcha').then(res => {
-				// 	console.log("/captcha")
-				// 	console.log(res)
-				// 	this.loginForm.token = res.data.data.token
-				// 	this.captchaImg = res.data.data.captchaImg
-				// 	this.loginForm.code = ''
-				// })
+				$.ajax({
+					url: 'http://it120club.space/check/sendTelephone',
+					type: "post",
+					data:{telephone:this.loginForm.telephone},
+					crossDomain:true,
+					xhrFields: {
+						withCredentials: true //允许跨域带Cookie
+					},
+					success:(data,statu)=>{
+						if(statu=='success'){
+							this.iftrue=true
+							this.telephoneToken=data.telephoneToken
+						}
+						else{
+							alert('出错了')
+						}
+					}
+				});
+			}
 			}
 		}
 	}
