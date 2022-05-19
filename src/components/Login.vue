@@ -37,7 +37,7 @@
 
 	import qs from 'qs'
     import axios from 'axios'
-	import { host,serverHost,getDatasP,setStandardInfo } from '../scripts/publicFunctions';
+	import { host,serverHost,getDatasP,setStandardInfo,setCookie } from '../scripts/publicFunctions';
 	import $ from 'jquery'
 
 	export default {
@@ -81,7 +81,14 @@
 			submitForm(formName) {
 				this.$refs[formName].validate((valid) => {
 					if (valid) {
-						getDatasP((e)=>{console.log(e);setStandardInfo();window.location=host+'pages/recruits.html'},'user/login')
+						axios.get('https://m53205254h.imdo.co/captcha')
+						axios.post('https://m53205254h.imdo.co:443/login?'+qs.stringify({username:this.loginForm.telephone,password:this.loginForm.password,code:'11111',token:'aaaaa'})).then(e=>{
+							console.log(e.headers.authorization)
+							setCookie('userToken',e.headers.authorization,7)
+							setCookie('userTelephone',this.loginForm.telephone,7)
+							setStandardInfo()
+							window.location=host+'pages/recruits.html'
+							})
 					} else {
 						console.log('error submit!!');
 						return false;

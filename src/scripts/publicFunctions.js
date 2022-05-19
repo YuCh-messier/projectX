@@ -14,7 +14,7 @@ if(userKey[0]){
         standardInfo=Object.assign(cursT[1],{...userKey[1],statu:true})
     }
     else{
-        setStandardInfo(()=>{standardInfo=Object.assign(cursT[1],{...userKey[1],statu:true})})
+        setStandardInfo(()=>{standardInfo=Object.assign(checkLocalStorage()[1],{...userKey[1],statu:true})})
     }
 }
 
@@ -37,9 +37,9 @@ function checkLocalStorage(){
 //检测是后有登录信息cookie
 function checkCookie(){
     return (
-        [hasCookieOrNot('telephone')[0] && hasCookieOrNot('userToken')[0],
+        [hasCookieOrNot('userTelephone')[0] && hasCookieOrNot('userToken')[0],
     {
-        telephone:hasCookieOrNot('telephone')[1],
+        telephone:hasCookieOrNot('userTelephone')[1],
         userToken:hasCookieOrNot('userToken')[1]
     }])
 }
@@ -63,7 +63,7 @@ function setStandardInfo(hAV=()=>{}){
 // 检测登录状态
 function checkAccount(hAV){
     if(checkCookie()[0]){//cookie
-        getDatasP(hAV,'check/checkUser')
+        hAV({statu:true})
     }
     else{hAV({statu:false})}
 }
@@ -75,14 +75,21 @@ function checkSpecialAccount(hAV,affairKey){
 
 //基本的请求数据
 function getDatas(hAV,route,dataO={}){
+    if(hasCookieOrNot('userTelephone')[0]){
+        var Ttele=hasCookieOrNot('userTelephone')[1]
+    }
+    else{
+        var Ttele='undefined'
+    }
     $.ajax({
+        beforeSend:function(request){
+            if(hasCookieOrNot('userToken')[0]){
+                request.setRequestHeader("Authorization",hasCookieOrNot('userToken')[1])
+            }
+        },
         url: serverHost+route,
         type: "get",
-        data:dataO,
-        crossDomain:true,
-        xhrFields: {
-            withCredentials: true //允许跨域带Cookie
-        },
+        data:{...dataO,telephone:Ttele},
         success:(data,statu)=>{
             if(statu=='success'){
                 hAV(data)
@@ -95,14 +102,21 @@ function getDatas(hAV,route,dataO={}){
 }
 //post版本
 function getDatasP(hAV,route,dataO={}){
+    if(hasCookieOrNot('userTelephone')[0]){
+        var Ttele=hasCookieOrNot('userTelephone')[1]
+    }
+    else{
+        var Ttele='undefined'
+    }
     $.ajax({
+        beforeSend:function(request){
+            if(hasCookieOrNot('userToken')[0]){
+                request.setRequestHeader("Authorization",hasCookieOrNot('userToken')[1])
+            }
+        },
         url: serverHost+route,
         type: "post",
-        data:dataO,
-        crossDomain:true,
-        xhrFields: {
-            withCredentials: true //允许跨域带Cookie
-        },
+        data:{...dataO,telephone:Ttele},
         success:(data,statu)=>{
             if(statu=='success'){
                 hAV(data)
@@ -124,7 +138,7 @@ function hasCookieOrNot(targer){
             return [true,cookie[1]]
         }
     }
-    return [false,'nono']
+    return [false,null]
 }
 
 //检测是否有localstorage
@@ -154,9 +168,9 @@ function objectToArray(ato){
 
 
 //设置cookie
-function setCookie(name,value)
+function setCookie(name,value,day=7)
 {
-	var Days = 30;
+	var Days = day;
 	var exp = new Date(); 
 	exp.setTime(exp.getTime() + Days*24*60*60*1000);
 	document.cookie = name + "="+ value.toString() + ";expires=" + exp.toGMTString();
@@ -183,3 +197,4 @@ export {getQueryVariable}
 export {checkSpecialAccount}
 export {standardInfo}
 export {setStandardInfo}
+export {setCookie}

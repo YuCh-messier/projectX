@@ -7,7 +7,7 @@ import MyRecruits from './MyRecruits.vue';
 import UserHome from './MobileSettingPages/UserHome.vue';
 import Files from './Forms/Files.vue';
 import { toRefs,ref } from 'vue';
-import { getDatas,getDatasP,checkAccount,standardInfo,host } from '../scripts/publicFunctions';
+import { getDatas,getDatasP,checkAccount,standardInfo,host, setStandardInfo } from '../scripts/publicFunctions';
 
 var userInfo=ref([])
 var userResume=ref({})
@@ -35,7 +35,7 @@ getDatas((e)=>{
 function sendInfo(e){
   checkAccount((e2)=>{
     if(e2.statu){
-      getDatasP((e)=>{console.log(e)},'user/setUserInfo',e)
+      getDatasP((e)=>{console.log(e);setStandardInfo()},'user/setUserInfo',e)
     }
     else{
       alert('请登录先')

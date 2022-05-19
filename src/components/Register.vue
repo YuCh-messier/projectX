@@ -28,7 +28,7 @@
 
 	import qs from 'qs'
     import axios from 'axios'
-	import { host,serverHost,getDatasP,setStandardInfo } from '../scripts/publicFunctions';
+	import { host,serverHost,getDatasP,setStandardInfo,setCookie } from '../scripts/publicFunctions';
 	import $ from 'jquery'
 
 	export default {
@@ -84,7 +84,10 @@
 									if(data.statu){
 										getDatasP((e)=>{
 											alert('注册成功')
-											// getDatasP((e)=>{console.log(e);setStandardInfo();window.location=host+'pages/recruits.html'},'user/login')
+											axios.post('https://m53205254h.imdo.co:443/register',{username:this.loginForm.telephone,name:this.loginForm.username,password:this.loginForm.password}).then(e=>{
+												console.log(e)
+												window.location=host+'pages/login.html'
+												})
 										},'user/register',this.loginForm)
 									}
 									else{
