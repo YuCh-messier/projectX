@@ -6,15 +6,14 @@ import { getDatas} from '../scripts/publicFunctions'
 import PptMobile from './Ppts/PptMobile.vue';
 
 var contents=ref([])
-getDatas((e)=>{contents.value=e},'recommends/allRecommends')
+getDatas('recommends/allRecommends','get').then(e=>{contents.value=e.data})
 
 function searchFunction(keyWord){
     if(keyWord==''){
-        alert('haha')
-        getDatas((e)=>{contents.value=e},'recommends/allRecommends')
+        getDatas('recommends/allRecommends','get',{type:'recommend'}).then(e=>{contents.value=e.data})
     }
     else{
-    getDatas((e)=>{contents.value=e},'recommends/searchRecommends',{keyWord:keyWord,type:'recommend'})
+    getDatas('recommends/searchRecommends','get',{keyWord:keyWord,type:'recommend'}).then(e=>{contents.value=e.data})
     console.log(keyWord)
     }
 }

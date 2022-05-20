@@ -7,45 +7,52 @@ import MyRecruits from './MyRecruits.vue';
 import UserHome from './MobileSettingPages/UserHome.vue';
 import Files from './Forms/Files.vue';
 import { toRefs,ref } from 'vue';
-import { getDatas,getDatasP,checkAccount,standardInfo,host, setStandardInfo } from '../scripts/publicFunctions';
+import { getDatas,checkAccount,standardInfo,host, setStandardInfo } from '../scripts/publicFunctions';
 
 var userInfo=ref([])
 var userResume=ref({})
 var userMessages=ref([])
 var collects=ref([])
 var userAno=ref({})
-var currentPath=ref('个人资料')
 var currentPathM=ref('首页')
+var files=ref([])
 
-checkAccount((e)=>{
-    if(!e.statu){
-        alert('请先登录！')
-        window.location=host+'pages/recruits.html'
-    }
-})
-getDatas((e)=>{
-  userInfo.value=e.userInfo
-  userResume.value=e.userResume
-  userMessages.value=e.userMessages
-  collects.value=e.collects
-  userAno.value=e.userAno
-  sessionStorage.setItem('userAno',JSON.stringify(userAno.value))
-},'user/getUserInfo')
-
-function sendInfo(e){
-  checkAccount((e2)=>{
-    if(e2.statu){
-      getDatasP((e)=>{console.log(e);setStandardInfo()},'user/setUserInfo',e)
-    }
-    else{
-      alert('请登录先')
-    }
-  })
+if(!checkAccount()[0]){
+    alert('请先登录！')
+    window.location=host+'pages/login.html'
 }
 
-function changeChoice(e){
-    currentPath.value=e
+getDatas('user/getUserInfo','get').then(e=>{
+  userInfo.value=e.data.userInfo
+  userResume.value=e.data.userResume
+  userMessages.value=e.data.userMessages
+  collects.value=e.data.collects
+  userAno.value=e.data.userAno
+  sessionStorage.setItem('userAno',JSON.stringify(userAno.value))
+  files.value=e.data.files
+})
+
+function sendInfo(e){
+  if(checkAccount()[0]){
+    getDatas('user/setUserInfo','post',e).then(e2=>{
+      console.log(e2.data);setStandardInfo()
+    })
+  }  
+}
+
+function sendResume(e){
+  if(checkAccount()[0]){
+    getDatas('user/setUserResume','post',e).then(e2=>{
+      console.log(e2.data);setStandardInfo()
+    })
   }
+}
+
+function logout(){
+    document.cookie = "telephone=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.reload()
+}
 
 function changeChoiceM(e){
     currentPathM.value=e

@@ -4,16 +4,15 @@ import { ref } from 'vue';
 import { getDatas,checkAccount,host} from '../scripts/publicFunctions'
 import PptMobile from './Ppts/PptMobile.vue';
 
-checkAccount((e)=>{
-    if(!e.statu){
-        alert('请先登录！')
-        window.location=host+'pages/recruits.html'
-    }
-})
+if(!checkAccount()[0]){
+    alert('请先登录！')
+    window.location=host+'pages/login.html'
+}
 
 var {willu}=defineProps(['willu'])
 var contents=ref([])
-getDatas((e)=>{contents.value=e},'myRecruits/allMyRecruits')
+
+getDatas('myRecruits/allMyRecruits','get').then(e=>{contents.value=e.data})
 </script>
 
 <template>

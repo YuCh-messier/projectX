@@ -3,8 +3,7 @@ import { Expand } from '@element-plus/icons-vue'
 import Son1 from './HeaderSon1.vue'
 import Son2 from './HeaderSon2.vue'
 import HeaderMobileSon1 from './HeaderMobileSon1.vue';
-import { host } from '../../scripts/publicFunctions';
-import { getDatasP,setStandardInfo } from '../../scripts/publicFunctions';
+import { host,getDatas } from '../../scripts/publicFunctions';
 import { ref } from 'vue';
 
 var props=defineProps(['user'])

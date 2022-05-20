@@ -10,14 +10,14 @@ function goto(href){
 </script>
 
 <template>
-    <div id="ppt" class="flex">
+    <div id="ppt" class="flex space-x-2">
         <div class="w-3/4">
             <div class="img" style="background-size:cover;background-position:center;" :style="'background-image:url('+ppts[0].graph+');'"></div>
         </div>
         <div class="w-1/4">
-            <div class="img" style="background-size:cover;background-position:center;" :style="'background-image:url('+ppts[1].graph+');'"></div>
-            <div class="img" style="background-size:cover;background-position:center;" :style="'background-image:url('+ppts[2].graph+');'"></div>
-            <div class="img" style="background-size:cover;background-position:center;" :style="'background-image:url('+ppts[3].graph+');'"></div>
+            <div class="img border" style="background-size:cover;background-position:center;" :style="'background-image:url('+ppts[1].graph+');'"></div>
+            <div class="img border" style="background-size:cover;background-position:center;" :style="'background-image:url('+ppts[2].graph+');'"></div>
+            <div class="img border" style="background-size:cover;background-position:center;" :style="'background-image:url('+ppts[3].graph+');'"></div>
         </div>
     </div>
 </template>

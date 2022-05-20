@@ -4,15 +4,14 @@ import { getDatas,checkAccount } from '../../scripts/publicFunctions';
 
 var collects=ref([])
 
-checkAccount((e)=>{
-    if(!e.statu){
-        alert('请先登录！')
-        window.location=host+'pages/recruits.html'
-    }
+if(!checkAccount()[0]){
+    alert('请先登录！')
+    window.location=host+'pages/login.html'
+}
+
+getDatas('user/getUserInfo','get').then(e=>{
+    collects.value=e.data.collects
 })
-getDatas((e)=>{
-  collects.value=e.collects
-},'user/getUserInfo')
 
 function goto(url){
     window.location=url

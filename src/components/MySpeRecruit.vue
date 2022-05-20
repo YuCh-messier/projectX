@@ -16,25 +16,20 @@ var userResume=ref({})
 var recruitStatu=ref([])
 var mapInfo=ref({address:''})
 
-checkAccount((e)=>{
-    if(!e.statu){
-        alert('请先登录！')
-        window.location=host+'pages/recruits.html'
-    }
-})
+if(!checkAccount()[0]){
+    alert('请先登录！')
+    window.location=host+'pages/login.html'
+}
 
-getDatas((e)=>{
-  headerInfo.value=e.headerInfo
-  speRecruitInfo.value=e.speRecruitInfo
-  companyInfo.value=e.companyInfo
-  userInfo.value=e.userInfo
-  userResume.value=e.userResume
-  recruitStatu.value=e.recruitStatu
-  mapInfo.value=e.mapInfo
-},
-'myRecruits/showMyRecruit',
-{affairId:affairId}
-)
+getDatas('myRecruits/showMyRecruit','get',{affairId:affairId}).then(e=>{
+  headerInfo.value=e.data.headerInfo
+  speRecruitInfo.value=e.data.speRecruitInfo
+  companyInfo.value=e.data.companyInfo
+  userInfo.value=e.data.userInfo
+  userResume.value=e.data.userResume
+  recruitStatu.value=e.data.recruitStatu
+  mapInfo.value=e.data.mapInfo
+})
 
 function myStatu(e){
     if(e=='待浏览'){

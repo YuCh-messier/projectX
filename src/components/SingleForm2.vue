@@ -1,13 +1,11 @@
 <script setup>
 import { ref } from 'vue';
-import { getQueryVariable,checkAccount,host,getDatasP } from '../scripts/publicFunctions';
+import { getQueryVariable,checkAccount,host,getDatas } from '../scripts/publicFunctions';
 
-checkAccount((e)=>{
-    if(!e.statu){
-        alert('请先登录！')
-        window.location=host+'pages/recruits.html'
-    }
-})
+if(!checkAccount()[0]){
+    alert('请先登录！')
+    window.location=host+'pages/login.html'
+}
 
 var type=getQueryVariable('type')
 if(type!='overView' && type!='awards' && type!='skills'){
@@ -23,16 +21,9 @@ var dicts={
 }
 
 function send(){
-  checkAccount((e2)=>{
-    if(e2.statu){
-      getDatasP((e)=>{console.log(e)},'user/setUserResume',values.value)
-      alert('上传成功')
-      window.location=host+'pages/mobileSettingPages/resume.html'
-    }
-    else{
-      alert('请登录先')
-    }
-  }) 
+  getDatas('user/setUserResume','post',values.value)
+  alert('上传成功')
+  window.location=host+'pages/mobileSettingPages/resume.html'
 }
 </script>
 

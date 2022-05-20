@@ -2,8 +2,7 @@
 import { ref } from 'vue';
 import { host,getDatas } from '../../scripts/publicFunctions';
 
-var ppts=ref([{graph:''},{graph:''},{graph:''},{graph:''}])
-getDatas((e)=>{ppts.value=e},'ppts/setPpts')
+var props=defineProps(['ppts'])
 
 function goto(href){
     window.location=href

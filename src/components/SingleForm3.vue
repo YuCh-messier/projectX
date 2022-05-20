@@ -1,13 +1,11 @@
 <script setup>
 import { ref } from 'vue';
-import { getQueryVariable,checkAccount,host,getDatasP } from '../scripts/publicFunctions';
+import { getQueryVariable,checkAccount,host,getDatas } from '../scripts/publicFunctions';
 
-checkAccount((e)=>{
-    if(!e.statu){
-        alert('请先登录！')
-        window.location=host+'pages/recruits.html'
-    }
-})
+if(!checkAccount()[0]){
+    alert('请先登录！')
+    window.location=host+'pages/login.html'
+}
 
 var type=getQueryVariable('type')
 var num=getQueryVariable('num')
@@ -24,22 +22,15 @@ var dicts={
 }
 
 function send(){
-  checkAccount((e2)=>{
-    if(e2.statu){
-      let tocheck=Object.values(values.value[type][num])
-      if(tocheck.indexOf('')!=-1){
-        alert('内容不完整')
-      }
-      else{
-        getDatasP((e)=>{console.log(e)},'user/setUserResume',values.value)
-        alert('上传成功')
-        window.location=host+'pages/mobileSettingPages/resume.html'
-      }
-    }
-    else{
-      alert('请登录先')
-    }
-  }) 
+  let tocheck=Object.values(values.value[type][num])
+  if(tocheck.indexOf('')!=-1){
+    alert('内容不完整')
+  }
+  else{
+    getDatas('user/setUserResume','post',values.value)
+    alert('上传成功')
+    window.location=host+'pages/mobileSettingPages/resume.html'
+  }
 }
 
 function deleteu(){

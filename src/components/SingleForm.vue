@@ -1,13 +1,11 @@
 <script setup>
 import { ref } from 'vue';
-import { getQueryVariable,checkAccount,host,getDatasP } from '../scripts/publicFunctions';
+import { getQueryVariable,checkAccount,host,getDatas } from '../scripts/publicFunctions';
 
-checkAccount((e)=>{
-    if(!e.statu){
-        alert('请先登录！')
-        window.location=host+'pages/recruits.html'
-    }
-})
+if(!checkAccount()[0]){
+    alert('请先登录！')
+    window.location=host+'pages/login.html'
+}
 
 var timeOrPosition=getQueryVariable('type')
 if(timeOrPosition!='time' && timeOrPosition!='position'){
@@ -18,7 +16,7 @@ var endtop=timeOrPosition=='time'?'userTime':'userPosition'
 var values=ref(JSON.parse(sessionStorage.getItem('userAno'))[endtop])
 
 function send(type){
-    getDatasP((e)=>{console.log(e)},'user/setAno',{...values.value,type:type})
+    getDatas('user/setAno','post',{...values.value,type:type})
     alert('上传成功')
     window.location=host+'pages/mobileSettingPages/resume.html'
 }

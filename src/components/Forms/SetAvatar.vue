@@ -15,7 +15,7 @@
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
-import { serverHost,getDatasP } from '../../scripts/publicFunctions'
+import { serverHost,getDatas } from '../../scripts/publicFunctions'
 
 import type { UploadProps } from 'element-plus'
 
@@ -26,19 +26,21 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
   uploadFile
 ) => {
   imageUrl.value = URL.createObjectURL(uploadFile.raw!)
+
   //上传图片成功后，返回新的头像地址
-  getDatasP((e)=>{
+  getDatas('user/showNewAvatar','post').then(e=>{
       alert('更新成功！')
-      localStorage.setItem('headImg',e.headImg)
-  },'user/showNewAvatar')
+      localStorage.setItem('headImg',e.data.headImg)
+  })
 }
 
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
-  if (rawFile.type !== 'image/jpeg') {
-    ElMessage.error('Avatar picture must be JPG format!')
+  alert(rawFile.type)
+  if (rawFile.type !== 'image/jpeg' && rawFile.type !=='image/png') {
+    alert('Avatar picture must be JPG format!')
     return false
   } else if (rawFile.size / 1024 / 1024 > 2) {
-    ElMessage.error('Avatar picture size can not exceed 2MB!')
+    alert('Avatar picture size can not exceed 2MB!')
     return false
   }
   return true

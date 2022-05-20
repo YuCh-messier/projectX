@@ -1,30 +1,22 @@
 <script setup>
 import { ArrowRight,CirclePlus } from '@element-plus/icons-vue'
 import { toRefs,ref } from 'vue';
-import { getDatas,checkAccount,getDatasP,host } from '../../scripts/publicFunctions';
+import { getDatas,checkAccount,host } from '../../scripts/publicFunctions';
 
-checkAccount((e)=>{
-    if(!e.statu){
-        alert('请先登录！')
-        window.location=host+'pages/recruits.html'
-    }
-})
+if(!checkAccount()[0]){
+    alert('请先登录！')
+    window.location=host+'pages/login.html'
+}
 
 var userresume=ref({})
-getDatas((e)=>{
-  userresume.value=e.userResume
-  sessionStorage.setItem('userResume',JSON.stringify(e.userResume))
-},'user/getUserInfo')
+
+getDatas('user/getUserInfo','get').then(e=>{
+  userresume.value=e.data.userResume
+  sessionStorage.setItem('userResume',JSON.stringify(e.data.userResume))
+})
 
 function sendresume(e){
-  checkAccount((e2)=>{
-    if(e2.statu){
-      getDatasP((e)=>{console.log(e)},'user/setUserResume',e)
-    }
-    else{
-      alert('请登录先')
-    }
-  }) 
+  getDatas('user/setUserResume','post',e)
 }
 
 function changeStatu(e){

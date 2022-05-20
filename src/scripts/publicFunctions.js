@@ -1,21 +1,19 @@
-import $, { get } from 'jquery'
+import axios from 'axios'
+import $ from 'jquery'
 
 //前端host
 var host='http://127.0.0.1:3000/'
 //后端host
 var serverHost='http://127.0.0.1:3001/'
 
+var serverHost2='https://m53205254h.imdo.co:443/'
+
 //初始化标准信息
-var userKey=checkCookie()
+var userKey=checkAccount()
+let cursT=checkLocalStorage()
 var standardInfo={statu:false}
-if(userKey[0]){
-    let cursT=checkLocalStorage()
-    if(cursT[0]){
-        standardInfo=Object.assign(cursT[1],{...userKey[1],statu:true})
-    }
-    else{
-        setStandardInfo(()=>{standardInfo=Object.assign(checkLocalStorage()[1],{...userKey[1],statu:true})})
-    }
+if(userKey[0] && cursT[0]){
+    standardInfo=Object.assign(cursT[1],{...userKey[1],statu:true})
 }
 
 //检测是否有基本信息localstorage
@@ -35,38 +33,29 @@ function checkLocalStorage(){
 }  
 
 //检测是后有登录信息cookie
-function checkCookie(){
+function checkAccount(){
     return (
-        [hasCookieOrNot('userTelephone')[0] && hasCookieOrNot('userToken')[0],
+        [hasCookieOrNot('telephone')[0] && hasCookieOrNot('userToken')[0],
     {
-        telephone:hasCookieOrNot('userTelephone')[1],
+        telephone:hasCookieOrNot('telephone')[1],
         userToken:hasCookieOrNot('userToken')[1]
-    }])
+    }
+    ])
 }
 
 //设置本地localstorage
-function setStandardInfo(hAV=()=>{}){
-    if(checkCookie()[0]){
-        getDatasP((e)=>{
-            localStorage.setItem('headImg',e.headImg)
-            localStorage.setItem('name',e.name)
-            localStorage.setItem('school',e.school)
-            localStorage.setItem('department',e.department)
-            localStorage.setItem('backImg',e.backImg)
-            hAV()
-        },'user/setStandardInfo')
-        return true
+function setStandardInfo(){
+    if(checkAccount()[0]){
+        getDatas('user/setStandardInfo','post').then(e=>{
+            localStorage.setItem('headImg',e.data.headImg)
+            localStorage.setItem('name',e.data.name)
+            localStorage.setItem('school',e.data.school)
+            localStorage.setItem('department',e.data.department)
+            localStorage.setItem('backImg',e.data.backImg)
+        })
     }
-    return false
 }
 
-// 检测登录状态
-function checkAccount(hAV){
-    if(checkCookie()[0]){//cookie
-        hAV({statu:true})
-    }
-    else{hAV({statu:false})}
-}
 
 //检测特殊权限
 function checkSpecialAccount(hAV,affairKey){
@@ -74,58 +63,22 @@ function checkSpecialAccount(hAV,affairKey){
 }
 
 //基本的请求数据
-function getDatas(hAV,route,dataO={}){
-    if(hasCookieOrNot('userTelephone')[0]){
-        var Ttele=hasCookieOrNot('userTelephone')[1]
+function getDatas(route,method,dataO={},host=serverHost){
+    var header={}
+    if(hasCookieOrNot('userToken')[0]){
+        header={"Authorization":hasCookieOrNot('userToken')[1]}
     }
-    else{
-        var Ttele='undefined'
+    var Ttele=''
+    if(hasCookieOrNot('telephone')[0]){
+        Ttele=hasCookieOrNot('telephone')[1]
     }
-    $.ajax({
-        beforeSend:function(request){
-            if(hasCookieOrNot('userToken')[0]){
-                request.setRequestHeader("Authorization",hasCookieOrNot('userToken')[1])
-            }
-        },
-        url: serverHost+route,
-        type: "get",
-        data:{...dataO,telephone:Ttele},
-        success:(data,statu)=>{
-            if(statu=='success'){
-                hAV(data)
-            }
-            else{
-                alert('出错了')
-            }
-        }
-        });
-}
-//post版本
-function getDatasP(hAV,route,dataO={}){
-    if(hasCookieOrNot('userTelephone')[0]){
-        var Ttele=hasCookieOrNot('userTelephone')[1]
-    }
-    else{
-        var Ttele='undefined'
-    }
-    $.ajax({
-        beforeSend:function(request){
-            if(hasCookieOrNot('userToken')[0]){
-                request.setRequestHeader("Authorization",hasCookieOrNot('userToken')[1])
-            }
-        },
-        url: serverHost+route,
-        type: "post",
-        data:{...dataO,telephone:Ttele},
-        success:(data,statu)=>{
-            if(statu=='success'){
-                hAV(data)
-            }
-            else{
-                alert('出错了')
-            }
-        }
-        });
+    return axios({
+        url:host+route,
+        method:method,
+        params:{telephone:Ttele,...dataO},
+        data:{telephone:Ttele,...dataO},
+        headers:header
+    })
 }
 
 //查询cookie
@@ -188,11 +141,11 @@ function getQueryVariable(variable)
     return(-1);
 }
 
+
 export {checkAccount}
 export {host}
 export {serverHost}
 export {getDatas}
-export {getDatasP}
 export {getQueryVariable}
 export {checkSpecialAccount}
 export {standardInfo}

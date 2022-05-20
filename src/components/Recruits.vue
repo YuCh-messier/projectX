@@ -11,16 +11,16 @@ var choices=ref([])
 var contents=ref([])
 var ppts=ref([{graph:''},{graph:''},{graph:''},{graph:''}])
 
-getDatas((e)=>{contents.value=e},'recruits/allRecruits',{type:'recruit'})
-getDatas((e)=>{choices.value=e},'choices/allRecruitsTaps')
-getDatas((e)=>{ppts.value=e},'ppts/setPpts')
+getDatas('recruits/allRecruits','get',{type:'recruit'}).then(e=>{contents.value=e.data})
+getDatas('choices/allRecruitsTaps','get').then(e=>{choices.value=e.data})
+getDatas('ppts/setPpts','get').then(e=>{ppts.value=e.data})
 
 function searchFunction(keyWord){
     if(keyWord==''){
-        getDatas((e)=>{contents.value=e},'recruits/allRecruits',{type:'recruit'})
+        getDatas('recruits/allRecruits','get').then(e=>{contents.value=e.data})
     }
     else{
-    getDatas((e)=>{contents.value=e},'recruits/searchRecruits',{keyWord:keyWord,type:'recruit'})
+    getDatas('recruits/searchRecruits','get',{keyWord:keyWord,type:'recruit'}).then(e=>{contents.value=e.data})
     console.log(keyWord)
     }
 }
@@ -33,7 +33,7 @@ function tapsfunction(taps){
 <template>
 <div>
     <SearchBox @searchfunction="searchFunction" class="lg:my-4 mx-auto xl:w-3/5"></SearchBox>
-    <PptMobile class="lg:hidden"></PptMobile>
+    <PptMobile :ppts="ppts" class="lg:hidden"></PptMobile>
     <div class="container mx-auto flex lg:px-12">
         <div class="mx-auto m-2 lg:w-1/3 lg:m-5">
             <TapBox class="hidden lg:block" :choices="choices" @tapsfunction="tapsfunction"></TapBox>

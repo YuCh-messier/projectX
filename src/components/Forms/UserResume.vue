@@ -30,7 +30,7 @@ var submitUserResume=function(){
     return
   }
 }
-    emits('getback',userresume)
+    emits('getback',userresume.value)
 }
 function checkBlank(obj){
   var items=Object.values(obj)

@@ -1,18 +1,12 @@
 <script setup>
 import { toRefs,ref } from 'vue';
 import SetAvatar from './SetAvatar.vue'
-import { serverHost,getDatasP,checkAccount } from '../../scripts/publicFunctions';
-var files=ref([])
+import { serverHost,getDatas,checkAccount } from '../../scripts/publicFunctions';
+var props=defineProps(['files'])
+var {files}=toRefs(props)
 var ifFile=ref(true)
-getDatasP((e)=>{files.value=e},'user/showFiles')
 
 function checkFileNum(){
-  checkAccount((e)=>{
-    if(!e.statu){
-      alert('账号有误')
-      ifFile.value=false
-    }
-  })
   if(files.value.length>=5){
     alert('最多上传5个文件')
     ifFile.value=false
@@ -28,7 +22,7 @@ function deletefile(filename){
   if(ifD){
 
 
-    getDatasP((e)=>{files.value=e},'user/showFiles')
+    window.location.reload()
   }
 }
 </script>

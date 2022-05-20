@@ -28,7 +28,7 @@
 
 	import qs from 'qs'
     import axios from 'axios'
-	import { host,serverHost,getDatasP,setStandardInfo,setCookie } from '../scripts/publicFunctions';
+	import { host } from '../scripts/publicFunctions';
 	import $ from 'jquery'
 
 	export default {
@@ -82,13 +82,11 @@
 							success:(data,statu)=>{
 								if(statu=='success'){
 									if(data.statu){
-										getDatasP((e)=>{
-											alert('注册成功')
-											axios.post('https://m53205254h.imdo.co:443/register',{username:this.loginForm.telephone,name:this.loginForm.username,password:this.loginForm.password}).then(e=>{
-												console.log(e)
-												window.location=host+'pages/login.html'
-												})
-										},'user/register',this.loginForm)
+										alert('注册成功')
+										axios.post('https://m53205254h.imdo.co:443/register',{username:this.loginForm.telephone,name:this.loginForm.username,password:this.loginForm.password}).then(e=>{
+											console.log(e)
+											window.location=host+'pages/login.html'
+											})
 									}
 									else{
 										alert('验证码有误')

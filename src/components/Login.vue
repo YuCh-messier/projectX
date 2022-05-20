@@ -37,7 +37,7 @@
 
 	import qs from 'qs'
     import axios from 'axios'
-	import { host,serverHost,getDatasP,setStandardInfo,setCookie } from '../scripts/publicFunctions';
+	import { host,getDatas,setStandardInfo,setCookie } from '../scripts/publicFunctions';
 	import $ from 'jquery'
 
 	export default {
@@ -85,7 +85,7 @@
 						axios.post('https://m53205254h.imdo.co:443/login?'+qs.stringify({username:this.loginForm.telephone,password:this.loginForm.password,code:'11111',token:'aaaaa'})).then(e=>{
 							console.log(e.headers.authorization)
 							setCookie('userToken',e.headers.authorization,7)
-							setCookie('userTelephone',this.loginForm.telephone,7)
+							setCookie('telephone',this.loginForm.telephone,7)
 							setStandardInfo()
 							window.location=host+'pages/recruits.html'
 							})
@@ -113,10 +113,7 @@
 							success:(data,statu)=>{
 								if(statu=='success'){
 									if(data.statu){
-										getDatasP((e)=>{
-											alert('重置成功')
-											window.location=host+'pages/login.html'
-										},'user/resetPwd',this.loginForm2)
+										getDatas('user/resetPwd','post',this.loginForm2).then(e=>{alert('重置成功');window.location=host+'pages/login.html'})
 									}
 									else{
 										alert('验证码有误')

@@ -4,7 +4,7 @@ import SpeRecruitContent from './RecruitContents/SpeRecruitContent.vue';
 import CompanyContent from './CompanyContents/CompanyContent.vue';
 import Maps from './Maps/Map.vue'
 import { ref } from 'vue';
-import { checkAccount, getDatas,getDatasP,getQueryVariable } from '../scripts/publicFunctions'
+import { checkAccount, getDatas,getQueryVariable } from '../scripts/publicFunctions'
 
 var affairId=getQueryVariable('affairId')
 var type=getQueryVariable('type')
@@ -14,48 +14,41 @@ var companyInfo=ref({})
 var mapInfo=ref({address:''})
 var ifCollect=ref(false)
 
-getDatas((e)=>{
-    console.log(e)
-    headerInfo.value=e.headerInfo
-    speRecruitInfo.value=e.speRecruitInfo
-    companyInfo.value=e.companyInfo
-    mapInfo.value=e.mapInfo
-    sessionStorage.setItem('mapinfo',JSON.stringify(e.mapInfo))
-    },
-    'recruits/speRecruit',
-    {affairId:affairId,type:type}
-    )
-
-checkAccount((e)=>{
-  if(e.statu){
-    getDatasP((e2)=>{ifCollect.value=(e2=='success')?true:false},'collect/checkCollect',{affairId:affairId,type:'recruit'})
-  }
-  else{
-    
-  }
+getDatas('recruits/speRecruit','get',{affairId:affairId,type:type}).then(e=>{
+    headerInfo.value=e.data.headerInfo
+    speRecruitInfo.value=e.data.speRecruitInfo
+    companyInfo.value=e.data.companyInfo
+    mapInfo.value=e.data.mapInfo
+    sessionStorage.setItem('mapinfo',JSON.stringify(e.data.mapInfo))
 })
 
+if(checkAccount()[0]){
+  getDatas('collect/checkCollect','post',{affairId:affairId,type:'recruit'}).then(e=>{
+    ifCollect.value=(e.data=='success')?true:false
+  })
+}
+
 function setRecruit(){
-  checkAccount((e)=>{
-  if(e.statu){
-    getDatasP((e2)=>{alert(e2)},'myRecruits/setRecruit',{affairId:affairId,type:'recruit'})
+  if(checkAccount()[0]){
+    getDatas('myRecruits/setRecruit','post',{affairId:affairId,type:'recruit'}).then(e=>{
+      console.log(e.data)
+    })
   }
   else{
     alert('请登录先')
   }
-  })
 }
 
 function setCollect(){
-  checkAccount((e)=>{
-    if(e.statu){
-      ifCollect.value=true
-      getDatasP((e2)=>{alert(e2)},'collect/setCollect',{affairId:affairId,type:'recruit'})
-    }
-    else{
-      alert('请登录先')
-    }
-  })
+  if(checkAccount()[0]){
+    ifCollect.value=true
+    getDatas('collect/setCollect','post',{affairId:affairId,type:'recruit'}).then(e=>{
+      console.log(e.data)
+    })
+  }
+  else{
+    alert('请登录先')
+  }
 }
 </script>
 
