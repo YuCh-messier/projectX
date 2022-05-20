@@ -6,13 +6,12 @@ var emits=defineEmits(['searchfunction'])
 </script>
 
 <template>
-    <div>
-    <el-input v-model="keyWord" class="w-2/3 mx-2 lg:m-2" placeholder="输入关键词">
+    <div class="flex justify-center items-center">
+    <el-input v-model="keyWord" class="w-2/3 lg:my-2 h-10" placeholder="输入关键词">
         <template #suffix>
-            <el-icon class="el-input__icon"><Search /></el-icon>
+            <button class="buttonStandardDark h-10 rounded-l-none translate-x-4" style="border-top-left-radius: 0;border-bottom-left-radius: 0;" @click="$emit('searchfunction',keyWord)"><search class="inline" style="width: 1em; height: 1em; margin-right: 4px" />搜索</button> 
         </template>
     </el-input>
-    <button class="buttonStandardDark" @click="$emit('searchfunction',keyWord)"><search class="inline" style="width: 1em; height: 1em; margin-right: 4px" />搜索</button> 
     </div>
 </template>
 
