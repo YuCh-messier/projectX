@@ -17,33 +17,33 @@ function changeStatu(e){
 
 <template>
     <div v-if="statu==0">
-        <div class="flex justify-between items-center my-5 px-10">
+        <div class="flex justify-between items-center mt-5 px-10">
             <div class="text-lg font-semibold inline-block">我的简历</div>
-            <button class="h-fit buttonStandardDark" @click="changeStatu">修改</button>
+            <button class="h-fit buttonStandardDarkO" @click="changeStatu">修改</button>
         </div>
-        <div class="py-4 px-10 rounded-sm">
-            <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">个人简介</div>
+        <div class="py-2 px-10 rounded-sm">
+            <div class="border-l-4 border-orange-400 pl-2 font-semibold my-2">个人简介</div>
             <div class="rounded p-4 mt-2 bg-white w-full whitespace-pre-line">{{userresume.overView}}</div>
         </div>
-        <div class="py-4 px-10 rounded-sm">
-            <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">获奖经历</div>
+        <div class="py-2 px-10 rounded-sm">
+            <div class="border-l-4 border-orange-400 pl-2 font-semibold my-2">获奖经历</div>
             <div class="rounded p-4 mt-2 bg-white w-full whitespace-pre-line">{{userresume.awards}}</div>
         </div>
-        <div class="py-4 px-10 rounded-sm">
-            <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">专业技能</div>
+        <div class="py-2 px-10 rounded-sm">
+            <div class="border-l-4 border-orange-400 pl-2 font-semibold my-2">专业技能</div>
             <div class="rounded p-4 mt-2 bg-white w-full whitespace-pre-line">{{userresume.skills}}</div>
         </div>
-        <div class="py-4 px-10 rounded-sm">
-          <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">教育经历</div>
-          <ResumeSon class="p-4 my-2" :resumeson="userresume.educateView"></ResumeSon>
+        <div class="py-2 px-10 rounded-sm">
+          <div class="border-l-4 border-orange-400 pl-2 font-semibold my-2">教育经历</div>
+          <ResumeSon class="my-2" :resumeson="userresume.educateView"></ResumeSon>
         </div>
-                <div class="py-4 px-10 rounded-sm">
-          <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">实习经历</div>
-          <ResumeSon class="bg-white p-4 my-2" :resumeson="userresume.internshipView"></ResumeSon>
+        <div class="py-2 px-10 rounded-sm">
+          <div class="border-l-4 border-orange-400 pl-2 font-semibold my-2">实习经历</div>
+          <ResumeSon class="my-2" :resumeson="userresume.internshipView"></ResumeSon>
         </div>
-                <div class="py-4 px-10 rounded-sm">
-          <div class="text-md font-semibold pb-4" style="border-bottom:1px solid #999">项目经历</div>
-          <ResumeSon class="p-4 my-2" :resumeson="userresume.projectView"></ResumeSon>
+        <div class="py-2 px-10 rounded-sm">
+          <div class="border-l-4 border-orange-400 pl-2 font-semibold my-2">项目经历</div>
+          <ResumeSon class="my-2" :resumeson="userresume.projectView"></ResumeSon>
         </div>
     </div>
     <UserResume v-else :userresume="userresume" @getback="changeStatu"></UserResume>

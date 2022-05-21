@@ -35,7 +35,6 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
 }
 
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
-  alert(rawFile.type)
   if (rawFile.type !== 'image/jpeg' && rawFile.type !=='image/png') {
     alert('Avatar picture must be JPG format!')
     return false

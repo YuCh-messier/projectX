@@ -17,7 +17,7 @@ var taps=computed(()=>{
     <div class="w-96 bg-white hover:cursor-pointer hover:text-orange-500 p-6 rounded-sm space-y-3" @click="goto('pages/speRecruit.html?affairId='+affairId+'&type=recruit')">
         <div class="flex items-center">
             <div class="font-semibold w-2/4 truncate">{{content.title}}</div>
-            <div class="mr-2 text-sm bg-orange-100 px-2 py-0.5 rounded font-semibold text-orange-400 ">实习</div>
+            <div class="mr-2 tapDark">实习</div>
             <div class="text-orange-500">{{content.salary}}</div>
         </div>
         <div class="textSm inline-block mx-1 py-0.5 px-2 border" v-for="tap in taps" :key="tap">

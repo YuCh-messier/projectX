@@ -6,8 +6,6 @@ var host='http://127.0.0.1:3000/'
 //后端host
 var serverHost='http://127.0.0.1:3001/'
 
-var serverHost2='https://m53205254h.imdo.co:443/'
-
 //初始化标准信息
 var userKey=checkAccount()
 let cursT=checkLocalStorage()

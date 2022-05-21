@@ -68,7 +68,7 @@ function changeChoiceM(e){
         <div class="mt-16">
         <PersonalInfo v-if="currentPathM=='资料'" :userinfo="userInfo" @sendinfo="sendInfo"></PersonalInfo>
         <UserHome v-if="currentPathM=='首页'" :userano="userAno"></UserHome>
-        <Files v-if="currentPathM=='附件'"></Files>
+        <Files v-if="currentPathM=='附件'" :files="files"></Files>
         <MessageList v-if="currentPathM=='消息'" :messages="userMessages"></MessageList>
         <MyRecruits v-if="currentPathM=='投递'" :willu="0"></MyRecruits>
         </div>

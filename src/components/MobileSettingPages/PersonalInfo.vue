@@ -19,11 +19,9 @@ function changeStatu(e){
             <div class="text-lg font-semibold inline-block">基本信息</div>
             <button class="h-fit buttonStandardDark z-20" @click="changeStatu">修改</button>
         </div>
-        <div v-for="info,index in userinfo" :key="info">
-          <div class="flex py-4 px-10 rounded-sm" :class="{'bg-white':(index%2==0)}" v-for="value,key in info" :key="value">
-            <div class="w-1/3 text-gray-500">{{key}}</div>
-            <div>{{value}}</div>
-          </div>
+        <div class="flex py-4 px-10 rounded-sm" :class="{'bg-white':(index%2==0)}" v-for="value,key,index in userinfo" :key="value">
+          <div class="w-1/3 text-gray-500">{{key}}</div>
+          <div>{{value}}</div>
         </div>
     </div>
     <UserInfo v-else :userinfo="userinfo" @getback="changeStatu"></UserInfo>

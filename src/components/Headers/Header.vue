@@ -1,5 +1,5 @@
 <script setup>
-import { Expand } from '@element-plus/icons-vue'
+import { Expand,ChatLineRound } from '@element-plus/icons-vue'
 import Son1 from './HeaderSon1.vue'
 import Son2 from './HeaderSon2.vue'
 import HeaderMobileSon1 from './HeaderMobileSon1.vue';
@@ -25,10 +25,19 @@ function changeCol(){
 
 var showCol=ref(false)
 var ifCol=ref('text-gray-500')
+var ifHelper=ref(false)
+
+function showHelper(){
+  ifHelper.value=true
+}
+
+function hideHelper(){
+  ifHelper.value=false
+}
 </script>
 
 <template>
-<div class="bg-white shadow-md">
+<div class="bg-white shadow-md box-shadow border-b">
   <div id="header" class="container mx-auto grid grid-cols-12 gap-4 items-center py-2 textSm hidden lg:grid">
     <div id="logo" class="col-start-1 col-end-3"><img src="" alt="" class="bg-pink-500 w-full h-fit"></div>
 
@@ -41,7 +50,10 @@ var ifCol=ref('text-gray-500')
       <div v-for="item in headerParts" :key="item.id" class="headerHoverPattern">{{item.value}}</div>
     </div>
 
-    <div></div>
+    <div class="headerHoverPattern" id="dodo" @mouseover="showHelper()" @mouseleave="hideHelper()">
+      <ChatLineRound class="w-6 inline-block mr-2"/>客服
+      <div v-if="ifHelper" class="absolute z-50"><img class="relative w-32 -translate-x-12 mt-2" src="http://124.223.155.169/testpic/pic3.jpg"></div>
+    </div>
 
     <div id="headImg" v-if="user.statu"><img @click="goto('pages/userSetting.html')" class="rounded-[100%] bg-gray-200 w-10 h-10 headerHoverPattern" :src="user.headImg" alt=""></div>
     <div class="col-start-11 col-end-13" v-if="user.statu">欢迎使用！{{user.name}}</div>

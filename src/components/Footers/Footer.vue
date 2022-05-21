@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="mt-6">
         <div id="footer" class="container mx-auto text-sm textSm lg:flex lg:items-center lg:justify-around  lg:flex-col gap-y-2 py-6 hidden">
             <div>营业执照信息网络传播视听节目许可证：0910417网络文化经营许可证 沪网文【2019】3804-274号广播电视节目制作经营许可证：（沪）字第01248号增值电信业务经营许可证 沪B2-20100043</div>
             <div>沪公网安备31011002002436号 |儿童色情信息举报专区 |扫黄打非举报</div>

@@ -5,7 +5,7 @@ var {sperecruitinfo}=toRefs(props)
 </script>
 
 <template>
-<div class="bg-white p-6 rounded whitespace-pre-line text-md leading-7">
+<div class="p-6 whitespace-pre-line leading-7 text-sm">
     {{sperecruitinfo.content}}
 </div>
 </template>

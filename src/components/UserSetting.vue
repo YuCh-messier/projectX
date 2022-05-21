@@ -65,7 +65,7 @@ function logout(){
     <div class="container mx-auto xl:px-24">
       <div>
         <UserHeader :standardinfo="standardInfo"></UserHeader>
-        <Switcher @changechoice="changeChoice" currentchoice="个人资料" :choices="['个人资料','简历上传','上传附件','我的收藏','我的投递','我的消息']"></Switcher>
+        <Switcher class="shadow-md" @changechoice="changeChoice" currentchoice="个人资料" :choices="['个人资料','简历上传','上传附件','我的收藏','我的投递','我的消息']"></Switcher>
         <PersonalInfo v-if="currentPath=='个人资料'" :userano="userAno" :userinfo="userInfo" @sendinfo="sendInfo"></PersonalInfo>
         <Resume v-if="currentPath=='简历上传'" :userresume="userResume" @sendresume="sendResume"></Resume>
         <MessageList v-if="currentPath=='我的消息'" :messages="userMessages"></MessageList>
@@ -73,7 +73,7 @@ function logout(){
         <Files v-if="currentPath=='上传附件'" :files="files"></Files>
         <CollectList v-if="currentPath=='我的收藏'" :collects="collects"></CollectList>
       </div>
-      <button class="buttonBigDark block mx-auto mt-6" @click="logout">退出登录</button>
+      <button class="buttonLargeDark block mx-auto mt-6" @click="logout">退出登录</button>
     </div>
 </template>
 

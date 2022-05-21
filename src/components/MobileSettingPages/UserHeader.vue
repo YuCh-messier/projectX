@@ -17,7 +17,7 @@ function goto(url){
             <div class="text-2xl text-white">{{standardinfo.name}}</div>
             <div class="text-sm text-white"><EditPen class="w-4 inline mr-1"/>点击生成我的简历</div>
         </div>
-        <img :src="standardinfo.headImg" class="w-20 rounded-full h-20 shadow-xl" alt="">
+        <img @click="goto('pages/setAvatar.html')" :src="standardinfo.headImg" class="w-20 rounded-full h-20 shadow-xl" alt="">
     </div>
 </template>
 

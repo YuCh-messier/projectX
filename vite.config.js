@@ -48,6 +48,7 @@ export default defineConfig({
         singleForm4: resolve(__dirname,  'src/pages/singleForm4.html'),
         register: resolve(__dirname,  'src/pages/register.html'),
         login: resolve(__dirname,  'src/pages/login.html'),
+        setAvatar: resolve(__dirname,  'src/pages/setAvatar.html'),
       }
     }
   }

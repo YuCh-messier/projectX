@@ -1,6 +1,6 @@
 <script setup>
+import { Download,Delete } from '@element-plus/icons-vue'
 import { toRefs,ref } from 'vue';
-import SetAvatar from './SetAvatar.vue'
 import { serverHost,getDatas,checkAccount } from '../../scripts/publicFunctions';
 var props=defineProps(['files'])
 var {files}=toRefs(props)
@@ -34,17 +34,15 @@ function deletefile(filename){
     <div v-for="file in files" :key="file" class="flex my-2">
         <!-- <img class="icon" v-if="file.filetype=='file'" src="./file.png"> -->
         <div class="w-24 truncate">{{file}}</div>
-        <div class="mx-4"><button class="buttonStandardLight" @click="download(file)">下载</button></div>
-        <div><button class="buttonStandardLight" @click="deletefile(file)">删除</button></div>
+        <button class="ml-4 text-sm text-orange-400 hover:text-orange-200 flex items-center" @click="download(file)"><Delete class="w-4 mr-1"/>下载</button>
+        <button class="ml-4 text-sm text-orange-400 hover:text-orange-200 flex items-center" @click="deletefile(file)"><Download class="w-4 mr-1"/>删除</button>
     </div>
   </div>
   <div class="text-lg font-semibold">上传附件</div>
   <form :action="serverHost+'user/uploadFile'" enctype="multipart/form-data" method="post" class="p-4 space-y-2">
       上传文件：<input type="file" @change="checkFileNum" name="files">
-      <button v-if="ifFile" class="buttonStandardDark" type="submit" style="width: fit-content;" onclick="alert('稍等片刻')">提交</button>
+      <button v-if="ifFile" class="buttonStandardDarkO" type="submit" style="width: fit-content;" onclick="alert('稍等片刻')">提交</button>
   </form>
-  <div class="text-lg font-semibold">更换头像</div>
-  <SetAvatar class="p-6"></SetAvatar>
 </div>
 </template>
 

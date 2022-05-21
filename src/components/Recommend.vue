@@ -21,12 +21,8 @@ function searchFunction(keyWord){
 
 <template>
 <div>
+    <div class="bg-gradient-to-r from-orange-50 to-green-50 py-4 mb-4"><SearchBox @searchfunction="searchFunction" class="mx-auto xl:w-3/5"></SearchBox></div>
     <PptMobile class="lg:hidden"></PptMobile>
-    <div class="container mx-auto flex">    
-        <div class="mx-auto m-2 lg:w-1/3 lg:m-5">
-            <SearchBox class="lg:my-4" @searchfunction="searchFunction"></SearchBox>
-        </div>
-    </div>
     <div class="container mx-auto">
         <RecommendList :contents="contents"></RecommendList>
     </div>

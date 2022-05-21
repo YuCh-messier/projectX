@@ -7,7 +7,7 @@ var {messages}=toRefs(props)
 
 <template>
     <div>
-        <MessageSon class="my-5" v-for="message in messages" :key="message.title" :message="message"></MessageSon>
+        <MessageSon class="my-5 bg-gray-50" v-for="message in messages" :key="message.title" :message="message"></MessageSon>
     </div>
 </template>
 

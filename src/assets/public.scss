@@ -8,6 +8,9 @@
 .buttonStandardDark{
     @apply hover:bg-amber-200 bg-amber-400 text-white py-1 px-4 text-sm rounded focus:bg-amber-200
 }
+.buttonStandardDarkO{
+    @apply hover:bg-orange-200 bg-orange-400 text-white py-1 px-4 text-sm rounded focus:bg-orange-200
+}
 .buttonStandardLight{
     @apply border border-amber-400 py-1 px-4 rounded text-amber-400 hover:border-amber-200 hover:cursor-pointer text-sm
 }
@@ -31,4 +34,10 @@
 }
 .textSm{
     @apply text-sm text-gray-500
+}
+.tapDark{
+    @apply text-sm bg-orange-100 px-2 py-0.5 rounded font-semibold text-orange-400
+}
+.buttonLargeDark{
+    @apply focus:bg-amber-200 bg-orange-400 py-3 px-16 rounded-sm text-white hover:bg-amber-200 hover:cursor-pointer font-semibold text-sm
 }

@@ -12,8 +12,10 @@ var headerInfo=ref({})
 var speRecruitInfo=ref({})
 var companyInfo=ref({})
 var userInfo=ref([])
+var userAno=ref([])
 var userResume=ref({})
 var recruitStatu=ref([])
+var standardInfo=ref([])
 var mapInfo=ref({address:''})
 
 if(!checkAccount()[0]){
@@ -29,6 +31,8 @@ getDatas('myRecruits/showMyRecruit','get',{affairId:affairId}).then(e=>{
   userResume.value=e.data.userResume
   recruitStatu.value=e.data.recruitStatu
   mapInfo.value=e.data.mapInfo
+  userAno.value=e.data.userAno
+  standardInfo.value=e.data.standardInfo
 })
 
 function myStatu(e){
@@ -42,15 +46,16 @@ function myStatu(e){
 </script>
 
 <template>
+<div>
+<div class="mb-6 bg-amber-50 p-4"><MyRecruitHeader class="container mx-auto" :headerinfo="headerInfo"></MyRecruitHeader></div>
 <div class="container mx-auto" >
-    <div class="mb-6"><MyRecruitHeader :headerinfo="headerInfo"></MyRecruitHeader></div>
-    <div class="flex gap-x-5 flex-col lg:flex-row xl:px-32">
-        <div class="w-full mb-10 lg:w-3/5"><SpeRecruitContent :sperecruitinfo="speRecruitInfo"></SpeRecruitContent></div>
-        <div class="w-full lg:w-2/5"><MySendedInfo :userinfo="userInfo"></MySendedInfo></div>
+    <div class="flex justify-between items-center my-5 px-10">
+        <div class="text-lg font-semibold inline-block mx-auto">我的简历</div>
     </div>
-    <div class="w-fit mx-auto mt-6 font-bold text-xl">实习地点</div>
-    <div class="w-fit mx-auto textSm mt-2">{{mapInfo.address}}</div>
-    <div class="xl:px-32"><MySendedResume :userresume="userResume"></MySendedResume></div>
+    <div class="w-full h-fit"><MySendedInfo :userinfo="userInfo" :userano="userAno" :standardinfo="standardInfo"></MySendedInfo></div>
+    <div class="mt-4"><MySendedResume :userresume="userResume"></MySendedResume></div>
+    <div class="w-fit mx-auto text-sm mt-2">{{mapInfo.address}}</div>
+    <div class="w-full mb-10"><SpeRecruitContent :sperecruitinfo="speRecruitInfo"></SpeRecruitContent></div>
     <div>
         <div class="w-fit mx-auto mt-6 font-bold text-xl">当前状态</div>
         <div class="flex m-5">
@@ -68,6 +73,7 @@ function myStatu(e){
             </div>
         </div>
     </div>
+</div>
 </div>
 </template>
 

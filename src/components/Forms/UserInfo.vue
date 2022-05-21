@@ -22,43 +22,41 @@ var submitUserInfo=function(){
             <button class="h-fit buttonStandardLight" @click="submitUserInfo">提交</button>
         </div>
         
-        <div v-for="info,index in userinfo" :key="info">
-          <div class="flex py-4 px-10 rounded-sm" :class="{'bg-white':(index%2==0)}" v-for="value,key in info" :key="value">
+        <div class="flex py-4 px-10 rounded-sm border-b" v-for="value,key in userinfo" :key="key">
             <div class="w-1/3 text-gray-500">{{key}}</div>
             <div v-if="key=='性别'" style="background-color:inherit;" class="hover:border-amber-400">
-                <el-radio v-model="userinfo[index][key]" label="男" size="large">男</el-radio>
-                <el-radio v-model="userinfo[index][key]" label="女" size="large">女</el-radio>
+                <el-radio v-model="userinfo[key]" label="男" size="large">男</el-radio>
+                <el-radio v-model="userinfo[key]" label="女" size="large">女</el-radio>
             </div>
-            <input v-else style="background-color:inherit;" class="border hover:border-amber-400" v-model="userinfo[index][key]"/>
-          </div>
+            <input :placeholder="key" v-else style="background-color:inherit;outline: none;" v-model="userinfo[key]"/>
         </div>
 
         <div class="flex justify-between items-center my-5 px-10">
             <div class="text-lg font-semibold inline-block">其他信息</div>
         </div>
-        <div class="flex py-4 px-10 rounded-sm bg-white">
+        <div class="flex py-4 px-10 rounded-sm border-b ">
             <div class="w-1/3 text-gray-500">期望岗位</div>
-            <input style="background-color:inherit;" class="border hover:border-amber-400" v-model="userano.userPosition.value1"/>
+            <input style="background-color:inherit;outline: none;" v-model="userano.userPosition.value1"/>
         </div>
-        <div class="flex py-4 px-10 rounded-sm">
+        <div class="flex py-4 px-10 rounded-sm border-b">
             <div class="w-1/3 text-gray-500">期望行业</div>
-            <input style="background-color:inherit;" class="border hover:border-amber-400" v-model="userano.userPosition.value2"/>
+            <input style="background-color:inherit;outline: none;" v-model="userano.userPosition.value2"/>
         </div>
-        <div class="flex py-4 px-10 rounded-sm bg-white">
+        <div class="flex py-4 px-10 rounded-sm border-b ">
             <div class="w-1/3 text-gray-500">期望城市</div>
-            <input style="background-color:inherit;" class="border hover:border-amber-400" v-model="userano.userPosition.value3"/>
+            <input style="background-color:inherit;outline: none;" v-model="userano.userPosition.value3"/>
         </div>
-        <div class="flex py-4 px-10 rounded-sm">
+        <div class="flex py-4 px-10 rounded-sm border-b">
             <div class="w-1/3 text-gray-500">到岗时间</div>
-            <input style="background-color:inherit;" class="border hover:border-amber-400" v-model="userano.userTime.value1"/>
+            <input style="background-color:inherit;outline: none;" v-model="userano.userTime.value1"/>
         </div>
-        <div class="flex py-4 px-10 rounded-sm bg-white">
+        <div class="flex py-4 px-10 rounded-sm border-b ">
             <div class="w-1/3 text-gray-500">实习时长</div>
-            <input style="background-color:inherit;" class="border hover:border-amber-400" v-model="userano.userTime.value2"/>
+            <input style="background-color:inherit;outline: none;" v-model="userano.userTime.value2"/>
         </div>
-        <div class="flex py-4 px-10 rounded-sm">
+        <div class="flex py-4 px-10 rounded-sm border-b">
             <div class="w-1/3 text-gray-500">每周出勤</div>
-            <input style="background-color:inherit;" class="border hover:border-amber-400" v-model="userano.userTime.value3"/>
+            <input style="background-color:inherit;outline: none;" v-model="userano.userTime.value3"/>
         </div>
     </div>
 </template>

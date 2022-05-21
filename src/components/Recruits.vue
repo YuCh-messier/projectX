@@ -32,16 +32,13 @@ function tapsfunction(taps){
 
 <template>
 <div>
-    <SearchBox @searchfunction="searchFunction" class="lg:my-4 mx-auto xl:w-3/5"></SearchBox>
+    <div class="bg-gradient-to-r from-orange-50 to-green-50 py-4 mb-4"><SearchBox @searchfunction="searchFunction" class="mx-auto xl:w-3/5"></SearchBox></div>
     <PptMobile :ppts="ppts" class="lg:hidden"></PptMobile>
     <div class="container mx-auto flex lg:px-12">
-        <div class="mx-auto m-2 lg:w-1/3 lg:m-5">
-            <TapBox class="hidden lg:block" :choices="choices" @tapsfunction="tapsfunction"></TapBox>
-        </div>
+        <TapBox class="hidden lg:flex w-1/3 bg-white" :choices="choices" @tapsfunction="tapsfunction"></TapBox>
         <Ppt :ppts="ppts" class="w-2/3 hidden lg:flex"></Ppt>
     </div>
-    <div class="container mx-auto">
-        <div class="border-b-4 pb-1 text-yellow-400 border-yellow-400 w-fit">热门岗位</div>
+    <div class="container mx-auto mb-6">
         <RecruitList :contents="contents"></RecruitList>
     </div>
 </div>

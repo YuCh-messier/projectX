@@ -13,7 +13,7 @@ function goto(url){
         <div class="hover:cursor-pointer space-y-2 bg-white p-4 rounded shadow m-2" v-for="collect in collects" :key="collect.title" @click="goto(collect.url)">
             <div class="flex justify-between">
                 <div class="text-sm">{{collect.title}}</div>
-                <div class="tapsStandard">{{collect.tap}}</div>
+                <div class="tapDark">{{collect.tap}}</div>
             </div>
             <div class="truncate h-10">{{collect.content}}</div>
         </div>

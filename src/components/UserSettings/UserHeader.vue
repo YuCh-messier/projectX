@@ -1,25 +1,24 @@
 <script setup>
 import { toRefs } from 'vue';
-import { EditPen } from '@element-plus/icons-vue'
+import { EditPen,Avatar,HomeFilled,Checked } from '@element-plus/icons-vue'
+import { host } from '../../scripts/publicFunctions';
 var props=defineProps(['standardinfo'])
 var {standardinfo}=toRefs(props)
+
+function goto(href){
+    window.location=host+href
+}
 </script>
 
 <template>
-    <div class="rounded bg-white" style="padding-bottom:11%;">
-        <div id="backimg" class="h-0 bg-gray-200 relative z-0" :style="'padding-bottom:20%;background-position: center;background-size: cover;'+'background-image:url('+standardinfo.backImg+');'"></div>
-        <div class="relative lg:translate-x-4">
-            <div class="absolute w-full z-30 space-x-6 translate-y-[-70%] lg:translate-y-[-50%]">
-                <div id="headimg" class="border-4 shadow-xl w-1/5 h-0 bg-gray-200 rounded z-30 align-middle mx-auto lg:hidden" :style="'padding-top:20%;background-size: cover;'+'background-image:url('+standardinfo.headImg+');'"></div>
-                <div id="headimg" class="border-4 shadow-xl w-1/6 h-0 bg-gray-200 rounded z-30 align-middle mx-auto hidden lg:inline-block" :style="'padding-top:16.6%;background-size: cover;'+'background-image:url('+standardinfo.headImg+');'">
-                    <div class="w-full h-6 -translate-y-6 hover:cursor-pointer" id="dodo"><EditPen class="h-6 rounded-full p-1 bg-gray-500 text-white mx-2 float-right"/></div>
-                </div>
-                <div class="z-30 translate-y-4 align-text-top hidden lg:inline-block">
-                    <div>{{standardinfo.name}}</div>
-                    <div class="textSm">{{standardinfo.school}}</div>
-                    <div class="textSm">{{standardinfo.department}}</div>
-                </div>
-            </div>
+    <div class="rounded bg-gradient-to-r from-orange-50 to-green-50 p-4"> 
+        <div id="headimg" class="mr-4 border-4 shadow-xl w-1/6 h-0 bg-gray-200 rounded z-30 align-middle mx-auto lg:inline-block" :style="'padding-top:16.6%;background-size: cover;'+'background-image:url('+standardinfo.headImg+');'">
+            <div class="w-full h-6 -translate-y-6 hover:cursor-pointer" id="dodo" @click="goto('pages/setAvatar.html')"><EditPen class="h-6 rounded-full p-1 bg-gray-500 text-white mx-2 float-right"/></div>
+        </div>
+        <div class="z-30 space-y-1 align-text-top hidden lg:inline-block">
+            <div class="flex items-center"><Avatar class="w-4 mr-1"/>{{standardinfo.name}}</div>
+            <div class="textSm flex items-center"><HomeFilled class="text-gray-400 w-4 mr-1"/>{{standardinfo.school}}</div>
+            <div class="textSm flex items-center"><Checked class="text-gray-400 w-4 mr-1"/>{{standardinfo.department}}</div>
         </div>
     </div>
 </template>
